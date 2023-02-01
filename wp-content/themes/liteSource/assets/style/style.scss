@@ -1,0 +1,28 @@
+// SASS Variables;
+$primary: #000;
+$secondary: #000;
+$grey: #333;
+$brand: #7539A4;
+
+// Import CSS / SASS Libraries
+@import 'setup/_include-media'; // Set breakpoints within here
+@import 'setup/normalize';
+@import '../slick/slick';
+@import '../slick/slick-theme';
+@import 'mixins/_mixins';
+@import 'components/_components';
+@import 'partials/_maintenance-mode';
+
+// Breakpoint template
+// @include media("<=md") {
+//   background-color: blue;
+// }
+
+@import 'structure/_header';
+@import 'structure/_footer';
+@import 'structure/_wrapper';
+@import 'partials/_error404';
+
+// Blocks
+
+//@import 'blocks/_'

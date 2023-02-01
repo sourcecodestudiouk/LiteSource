@@ -1,0 +1,90 @@
+//////////////////////////////////////////////////////////////////////
+// Footer Area
+//////////////////////////////////////////////////////////////////////
+
+.site-footer{
+  width:100%;
+  @include breakout();
+  .upper-footer{
+    padding:25px 0;
+    .footer-nav{
+      ul{
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        list-style: none;
+        padding-left:0;
+        margin-bottom:0;
+        li{
+          margin-right:25px;
+          a{
+
+          }
+        }
+      }
+    }
+  }
+  .lower-footer{
+    display:flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top:25px;
+    padding-bottom:25px;
+    border-top:1px solid rgba($secondary,0.1);
+    @include media("<=md") {
+      display:flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    @include media("<=sm") {
+      align-items: center;
+    }
+    p{
+      margin-bottom:0;
+      margin-left:15px;
+      padding-left:15px;
+      border-left:1px solid rgba($secondary,0.1);
+      &:first-child{
+        border:0;
+      }
+      a{
+        color:$secondary;
+      }
+      @include media("<=md") {
+        border:0;
+        border-top:1px solid rgba($secondary,0.1);
+        padding:15px 0;
+      }
+    }
+    .accreditation{
+      @include media("<=sm") {
+        margin-top:15px;
+        text-align: center;
+      }
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      a{
+        text-transform: uppercase;
+        font-weight:700;
+        font-family: co-headline, sans-serif;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        margin-left:5px;
+        margin-right:5px;
+        margin-top:-3px;
+        svg{
+          height:15px;
+          width:auto;
+          margin-right:5px;
+        }
+        &:hover{
+          color:$brand!important;
+          text-decoration: none;
+
+        }
+      }
+    }
+  }
+}

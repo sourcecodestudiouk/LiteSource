@@ -1,0 +1,54 @@
+//////////////////////////////////////////////////////////////////////
+// Buttons
+//////////////////////////////////////////////////////////////////////
+
+p.btn{
+  border:1px solid $secondary;
+  background-color:$primary;
+  padding:7px 0;
+  position: relative;
+  border-radius:0;
+  margin:0 20px 0 0px;
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
+  a{
+    color:$secondary;
+    padding:7px;
+    position: relative;
+    z-index: 10;
+  }
+  &:hover{
+    a{
+      color:$secondary;
+      text-decoration: none;
+    }
+  }
+}
+
+p.btn-second{
+  border:1px solid $secondary;
+  background-color:$secondary;
+  a{
+    color:$primary;
+  }
+  &:hover{
+    background-color:$primary;
+    a{
+      color:$secondary;
+    }
+  }
+}
+
+p.btn-ghost{
+  background-color: transparent;
+  a{
+
+  }
+  &:hover{
+    a{
+      color:$primary;
+    }
+  }
+}

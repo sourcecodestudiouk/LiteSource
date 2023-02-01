@@ -1,0 +1,56 @@
+//////////////////////////////////////////////////////////////////////
+// Header Area
+//////////////////////////////////////////////////////////////////////
+.site-header{
+  width:100%;
+  @include breakout();
+  position: fixed;
+  z-index: 260;
+  border-bottom:1px solid #eee;
+  background-color:white;
+  .container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height:100px;
+    padding:25px 0;
+    a{
+      width:200px;
+      .logo{
+        height:80px;
+        width:auto;
+      }
+    }
+    .desktop-menu{
+      @include media("<=md") {
+        display:none;
+      }
+      .desktop-nav{
+        ul{
+          display:flex;
+          padding-left:0;
+          list-style: none;
+          margin-bottom:0;
+          li{
+            margin-left:25px;
+            a{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.scroll-header{
+  .container{
+    height:60px;
+    padding:5px 0;
+    .mobile-menu-trigger{
+      .btn{
+        top:15px;
+      }
+    }
+  }
+}
