@@ -1,4 +1,6 @@
 <?php
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Register ACF Blocks
 
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types() {
@@ -98,9 +100,73 @@ function my_acf_init_block_types() {
     }
 }
 
-// Options Page - Have to be after above statement as function won't exist.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Add options pages
+
 if( function_exists('acf_add_options_page') ) {
-  acf_add_options_page();
+  $args = array(
+    'page_title' => 'Site Options',
+    'menu_title' => 'Site Options',
+    'menu_slug' => 'site-options',
+    'capability' => 'edit_posts',
+    'position' => false,
+    'parent_slug' => '',
+    'icon_url' => 'dashicons-menu',
+    'redirect' => true,
+    'post_id' => 'site-options',
+    'autoload' => false,
+    'update_button'		=> __('Update', 'acf'),
+    'updated_message'	=> __("Options Updated", 'acf'),
+  );
+  acf_add_options_page( $args );
+
+  $args = array(
+    'page_title'  => __('Company Info'),
+    'menu_title'  => __('Company Info'),
+    'menu_slug' => 'company-info',
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
+  $args = array(
+    'page_title'  => __('Branding'),
+    'menu_title'  => __('Branding'),
+    'menu_slug' => 'branding-options',
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
+  $args = array(
+    'page_title'  => __('Header'),
+    'menu_title'  => __('Header'),
+    'menu_slug' => 'header-layout',
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
+  $args = array(
+    'page_title'  => __('Footer'),
+    'menu_title'  => __('Footer'),
+    'menu_slug' => 'footer-layout',
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
+  $args = array(
+    'page_title'  => __('Content'),
+    'menu_title'  => __('Content'),
+    'menu_slug' => 'content-types',
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
+  $args = array(
+    'page_title'  => __('Social Media'),
+    'menu_title'  => __('Social Media'),
+    'parent_slug' => 'site-options',
+  );
+  acf_add_options_sub_page( $args );
+
   if(get_field('maintenance_mode', 'options')){
     $args = array(
       'page_title' => 'Maintenance / Holding Mode',
@@ -137,7 +203,5 @@ if( function_exists('acf_add_options_page') ) {
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// CONTENT BLOCKS - ONLY USE THE ONES YOU WANT.
 
 ?>

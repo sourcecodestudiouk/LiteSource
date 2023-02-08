@@ -125,8 +125,12 @@ include_once( get_template_directory() . '/functions/permissions.php' );
 include_once( get_template_directory() . '/functions/login-style.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Login Styling
+include_once( get_template_directory() . '/functions/dashboard.php' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Custom Post Types
-//include_once( get_template_directory() . '/functions/post-types.php' );
+include_once( get_template_directory() . '/functions/post-types.php' );
 
 
 ?>

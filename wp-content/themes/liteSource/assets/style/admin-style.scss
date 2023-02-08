@@ -1,0 +1,136 @@
+$primary: #170E28;
+$secondary: #FFBAFA;
+
+html.wp-toolbar{
+    padding-top:0!important;
+  }
+  #wpwrap{
+    background-color:white;
+  }
+
+  #adminmenuback, #adminmenu, #adminmenuwrap{
+    background-color:$primary!important;
+  }
+
+  #adminmenu {
+    li:focus, li:hover{
+      .wp-menu-image:before{
+        color:$primary!important;
+      }
+    }
+    a{
+      color:white!important;
+      border-bottom:1px solid grey;
+      &:hover, &:focus{
+        background-color:$secondary!important;
+        color:$primary!important;
+        .wp-menu-image:before{
+          color:$primary!important;
+        }
+      }
+      a .wp-menu-name{
+        width:100%!important;
+      }
+      &:after{
+        border-right-color:white!important;
+      }
+    }
+    .wp-submenu{
+      &:after{
+        content:'';
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color:#FFBAFA!important;
+        opacity:0.6;
+        z-index: -1;
+      }
+      a{
+        color:#white!important;
+      }
+    }
+  }
+
+
+  #adminmenu > .current, #adminmenu .wp-has-current-submenu{
+    background-color:#FFBAFA!important;
+    color:#170E28!important;
+  }
+
+  #adminmenu > .current .wp-menu-name, #adminmenu > .current a{
+    background-color:rgba(0, 0, 0, 0)!important;
+  }
+
+
+  #adminmenu li .wp-submenu{
+    padding:0!important;
+
+  }
+
+
+  .page-title-action{
+    border-radius:10px!important;
+  }
+
+  #footer-upgrade{
+    display:none!important;
+  }
+
+  #wpadminbar{
+    display:none;
+  }
+
+  #adminmenu li.wp-menu-separator {
+    margin:0!important;
+    display:none!important;
+  }
+
+  #adminmenu > li:hover{
+    background-color:#FFBAFA!important;
+
+  }
+
+  #adminmenu li:hover div{
+    color:#170E28!important;
+  }
+
+  #adminmenu .wp-has-current-submenu div.wp-menu-image:before{
+    color:white!important;
+  }
+
+  #collapse-menu button:hover{
+    color:white;
+  }
+
+  #adminmenu .toplevel_page_company-profile a{
+    //color:<?= $colours['primary_colour']; ?>!important;
+    //background-image:url(<?= $img['url']; ?>);
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  #adminmenu .toplevel_page_company-profile a .wp-menu-name{
+    opacity: 0;
+  }
+
+////////////////////////////////////////////////////////////////////////////////
+// Body Content
+#wpbody-content{
+  a{
+    color:$primary;
+  }
+  .notice-warning{
+    border-left-color:$secondary!important;
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Footer Area
+#footer-thankyou{
+  a{
+    color:#FFBAFA;
+  }
+}

@@ -1,32 +1,33 @@
 <?php
 ////////////////////////////////////////////////////////////////////////////////////
-// Flamingo Permissions for different users
-remove_filter( 'map_meta_cap', 'flamingo_map_meta_cap' );
+// Subscription Status and User Permissions
 
-add_filter( 'map_meta_cap', 'mycustom_flamingo_map_meta_cap', 9, 4 );
+$sub = get_field('subscription_status', 'admin-settings');
 
-function mycustom_flamingo_map_meta_cap( $caps, $cap, $user_id, $args ) {
-    $meta_caps = array(
+if($sub == 'lapsed'){
 
-		'flamingo_edit_contact' => 'edit_posts',
-		'flamingo_edit_contacts' => 'edit_posts',
-		'flamingo_delete_contact' => 'edit_posts',
-		'flamingo_edit_inbound_message' => 'publish_posts',
-		'flamingo_edit_inbound_messages' => 'publish_posts',
-		'flamingo_delete_inbound_message' => 'publish_posts',
-		'flamingo_delete_inbound_messages' => 'publish_posts',
-		'flamingo_spam_inbound_message' => 'publish_posts',
-		'flamingo_unspam_inbound_message' => 'publish_posts',
-		'flamingo_edit_outbound_message' => 'publish_posts',
-		'flamingo_edit_outbound_messages' => 'publish_posts',
-		'flamingo_delete_outbound_message' => 'publish_posts',
-	);
+}
 
-    $caps = array_diff( $caps, array_keys( $meta_caps ) );
+if($sub == 'one-page'){
+  $role = get_role('editor');
+  $role->remove_cap('delete_pages');
+  $role->remove_cap('delete_others_pages');
+  $role->remove_cap('delete_published_pages');
+  $role->remove_cap('create_pages');
 
-    if ( isset( $meta_caps[$cap] ) )
-        $caps[] = $meta_caps[$cap];
+  function one_page_post_remove(){
+   remove_menu_page('edit.php');
+  }
+  add_action('admin_menu', 'one_page_post_remove');
+}
 
-    return $caps;
-	}
+if($sub == 'business-plus'){
+
+}
+
+if($sub == 'ecommerce'){
+
+}
+
+
 ?>
