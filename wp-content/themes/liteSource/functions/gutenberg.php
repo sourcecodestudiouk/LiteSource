@@ -14,7 +14,10 @@ function gutenberg_css(){
 add_action( 'admin_init', 'hide_editor' );
 function hide_editor() {
   // Get the Post ID.
-  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  if(isset($_GET['post'])){
+    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  }
+  
   if( !isset( $post_id ) ) return;
 
   // Hide the editor on the page titled 'Homepage'
@@ -33,9 +36,53 @@ function hide_editor() {
 }
 
 // Remove Comments From Menu Section
-add_action( 'admin_init', 'my_remove_admin_menus' );
+//add_action( 'admin_init', 'my_remove_admin_menus' );
 function my_remove_admin_menus() {
   remove_menu_page( 'edit-comments.php' );
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Gutenberg Block - ONLY USE THE ONES YOU WANT.
+
+add_filter( 'allowed_block_types_all', 'misha_allowed_block_types', 25, 2 );
+
+function misha_allowed_block_types( $allowed_blocks, $editor_context ) {
+
+	return array(
+		'core/image',
+		'core/paragraph',
+		'core/heading',
+		'core/list',
+		'core/list-item',
+		'core/block',
+		'core/shortcode',
+		'core/spacer',
+		'core/separator',
+		'core/row',
+		'core/group',
+		'core/columns',
+		'core/image',
+		'core/gallery',
+		'core/table',
+		'core/pullquote',
+		'core/preformatted',
+		'core/heading',
+		'core/paragraph',
+
+		// Core Bespoke Blocks
+		'acf/hero-header',
+		'acf/page-header',
+		
+		'acf/call-to-action',
+		'acf/content-slider',
+
+		// Events Module Blocks
+		'acf/events-card-slider',
+		'acf/events-calendar',
+		'acf/events-information',
+
+
+	);
 }
 
 ?>

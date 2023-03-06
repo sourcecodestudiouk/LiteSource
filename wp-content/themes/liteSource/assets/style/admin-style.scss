@@ -48,7 +48,7 @@ html.wp-toolbar{
         z-index: -1;
       }
       a{
-        color:#white!important;
+        color:white!important;
       }
     }
   }
@@ -120,12 +120,14 @@ html.wp-toolbar{
 #wpbody-content{
   a{
     color:$primary;
+    &.components-snackbar__action{
+      color:white;
+    }
   }
   .notice-warning{
     border-left-color:$secondary!important;
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // Footer Area
@@ -133,4 +135,8 @@ html.wp-toolbar{
   a{
     color:#FFBAFA;
   }
+}
+
+.hide-if-no-customize{
+  display: none;
 }

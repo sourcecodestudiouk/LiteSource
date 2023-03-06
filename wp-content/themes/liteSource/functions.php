@@ -5,12 +5,14 @@
  *  Custom functions, support, custom post types and more.
  */
 
- function is_scs(){
-  global $current_user;
+
+function is_scs(){
+  $current_user = wp_get_current_user();
   if($current_user->user_email == 'admin@sourcecodestudio.co.uk'){
    return true;
  }
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,8 +86,9 @@ add_action('wp_enqueue_scripts', 'styles');
 function register_menu() {
   register_nav_menus(array( // Using array to specify more menus if needed
     'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
-    'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-    'footer-menu' => __('Footer Menu', 'html5blank'), // Extra Navigation if needed (duplicate as many as you need!)
+    'footer-menu-1' => __('Footer Menu One', 'html5blank'), // Extra Navigation if needed (duplicate as many as you need!)
+    'footer-menu-2' => __('Footer Menu Two', 'html5blank'), // Extra Navigation if needed (duplicate as many as you need!)
+    'footer-menu-3' => __('Footer Menu Three', 'html5blank'), // Extra Navigation if needed (duplicate as many as you need!)
     'mobile-menu' => __('Mobile Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
   ));
 }
@@ -93,15 +96,17 @@ add_action('init', 'register_menu'); // Add Menus
 
 
 include_once( get_template_directory() . '/functions/navigation/header-nav.php' );
-include_once( get_template_directory() . '/functions/navigation/footer-nav.php' );
-include_once( get_template_directory() . '/functions/navigation/mobile-nav.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Misc Functions
 include_once( get_template_directory() . '/functions/misc.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Advanced Custom Fields Functions
+// Misc Functions
+include_once( get_template_directory() . '/functions/components.php' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Gutenberg Functions
 include_once( get_template_directory() . '/functions/gutenberg.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,12 +130,21 @@ include_once( get_template_directory() . '/functions/permissions.php' );
 include_once( get_template_directory() . '/functions/login-style.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Login Styling
+// WordPress Dashboard
 include_once( get_template_directory() . '/functions/dashboard.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Custom Post Types
+// Post Types
 include_once( get_template_directory() . '/functions/post-types.php' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Admin Notices
+include_once( get_template_directory() . '/functions/admin-notices.php' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Automatic Templates Content
+include_once( get_template_directory() . '/functions/template-content.php' );
+
 
 
 ?>

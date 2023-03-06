@@ -42,7 +42,7 @@ html.wp-toolbar {
   z-index: -1;
 }
 #adminmenu .wp-submenu a {
-  color: #white !important;
+  color: white !important;
 }
 
 #adminmenu > .current, #adminmenu .wp-has-current-submenu {
@@ -104,10 +104,17 @@ html.wp-toolbar {
 #wpbody-content a {
   color: #170E28;
 }
+#wpbody-content a.components-snackbar__action {
+  color: white;
+}
 #wpbody-content .notice-warning {
   border-left-color: #FFBAFA !important;
 }
 
 #footer-thankyou a {
   color: #FFBAFA;
+}
+
+.hide-if-no-customize {
+  display: none;
 }

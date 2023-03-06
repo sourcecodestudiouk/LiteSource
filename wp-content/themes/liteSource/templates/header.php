@@ -1,15 +1,50 @@
-<header class="site-header">
-  <div class="container">
-    <?php $img = get_field('site_logo', 'options'); ?>
-    <a href="<?php echo get_home_url(); ?>">
-      <img class="logo" src="<?php echo $img["url"]; ?>" alt="site-logo"/>
-    </a>
-    <nav class="desktop-nav" role="navigation">
-      <?php header_nav(); ?>
-    </nav>
-    <div class="off-canvas-menu-trigger">
+<?php 
+  $logo = get_field('company_logo', 'options');
+  $icon = get_field('company_icon', 'options');
+  $layout = get_field('header_layout', 'options');
 
-    </div>
+  $colours = get_field('site_colours', 'options');
+  $bgCol = $colours['primary'];
+  $txtCol = getContrastColor($colours['primary']);
+
+  $cta = get_field('call_to_action_options', 'options');
+  $ctaBg = $colours['secondary'];
+  $ctaTxt = getContrastColor($colours['secondary']);
+
+  $fixed = get_field('sticky_header', 'options');
+?>
+
+<?php 
+if(current_user_can( 'edit_posts' )){ ?>
+<div id="scs-admin-menu">
+  <div class="company-info">
+    <img src="<?= $icon['url']; ?>" alt="<?= $icon['alt']; ?>"/>
+    <p class="dashboard"><a href="/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
+    <p class="edit"><a href="<?= get_edit_post_link(); ?>"><i class="fa-solid fa-pen-to-square"></i>Edit</a></p>
+  </div>
+  <div class="admin-info">
+    <p class="user-logout"><a href="#"><i class="fas fa-sign-out-alt"></i></a></p>
+  </div>
+</div>
+<?php
+} ?>
+
+
+<header class="site-header <?php if($fixed){ echo 'fixed-header'; } ?> <?php if(!$cta['add_call_to_action_button']){ echo 'no-cta'; } ;?>" style="background-color:<?= $bgCol; ?>; color:<?= $txtCol; ?>;">
+  <div class="container <?= $layout; ?>">
+    <a class="logo-container" href="<?php echo get_home_url(); ?>">
+      <img class="logo" src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>"/>
+    </a>
+    <?php header_nav(); ?>
+    <?php
+    if($cta['add_call_to_action_button']){ ?>
+       <p class="btn" style="background-color:<?= $ctaBg; ?>; color:<?= $ctaTxt; ?>"><span style="background-color:<?= $ctaTxt; ?>;" class="background"></span><a href="<?= $cta['call_to_action_button']['url'] ?>"><?= $cta['call_to_action_button']['title'] ?></a></p> 
+    <?php
+    } ?>
+    <div class="off-canvas-menu-trigger">
+        <span class="label" style="color:<?= $txtCol; ?>">Menu</span>
+        <i class="fa-solid fa-bars"></i>
+      </div>
   </div>
 </header>
 

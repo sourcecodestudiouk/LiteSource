@@ -1,0 +1,59 @@
+body{
+   
+    &.righteous-roboto-font-family{
+       
+    }
+    &.bebas-opensans-font-family{
+       
+    }
+    h1, h2, h3, h4, h5, h6{
+        //font-family:$headerfont;
+        font-weight:700;
+    }
+    //font-family: $bodyfont!important;
+    &.curved-border-radius{
+        p.btn{
+            border-radius:8px;
+        }
+    }
+    &.rounded-border-radius{
+        p.btn{
+            border-radius:40px;
+        }
+    }
+
+    h1{
+        font-size:66px;
+        @include media("<=md") {
+            font-size:46px;
+        }
+        @include media("<=sm") {
+            font-size:27px;
+        }
+    }
+    h2{
+
+    }
+    h3{
+
+    }
+    h4{
+
+    }
+    h5{
+
+    }
+    h6{
+        font-size:18px;
+        line-height:2;
+        @include media("<=md") {
+            font-size:15px;
+        }
+    }
+}
+    
+
+
+
+
+

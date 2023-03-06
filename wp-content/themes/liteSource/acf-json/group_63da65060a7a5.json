@@ -1,13 +1,13 @@
 {
     "key": "group_63da65060a7a5",
-    "title": "OPTIONS: Header",
+    "title": "OPTIONS: Footer",
     "fields": [
         {
-            "key": "field_63da6506e9c29",
-            "label": "Layout",
-            "name": "layout",
+            "key": "field_63f3a0647e307",
+            "label": "Company Description",
+            "name": "company_description",
             "aria-label": "",
-            "type": "button_group",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,22 +15,19 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "logo-left": "Logo Left & Navigation Right",
-                "logo-right": "Logo Right & Navigation Left"
             },
             "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal"
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_63da6539e9c2a",
-            "label": "Add Secondary Header",
-            "name": "add_secondary_header",
+            "key": "field_63f378e414f28",
+            "label": "Footer Style Options",
+            "name": "footer_style_options",
             "aria-label": "",
-            "type": "true_false",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -39,11 +36,116 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_63f378e414f29",
+                    "label": "Text Colour",
+                    "name": "text_colour",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_63f378e414f2a",
+                    "label": "Background Colour",
+                    "name": "background_colour",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63ef6472012d6",
+                                "operator": "==",
+                                "value": "row"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "rgba(0,0,0,0)",
+                    "enable_opacity": 1,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_63f3a5ca7f046",
+                    "label": "Icons Colour",
+                    "name": "icons_colour",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                }
+            ]
+        },
+        {
+            "key": "field_63f3795a4d3ff",
+            "label": "Menu Columns",
+            "name": "menu_columns",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "To edit the menus, please head to 'Appearances -> Menus'.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "",
+            "button_label": "Add Column",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_63f379a51ff5c",
+                    "label": "Menu Column Title",
+                    "name": "menu_column_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_63f3795a4d3ff"
+                }
+            ]
         }
     ],
     "location": [
@@ -51,7 +153,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "company-info"
+                "value": "footer-layout"
             }
         ]
     ],
@@ -64,5 +166,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1675270726
+    "modified": 1676912128
 }

@@ -1,0 +1,171 @@
+{
+    "key": "group_6401d90b3e99e",
+    "title": "BLOCK: Event Information",
+    "fields": [
+        {
+            "key": "field_640203c8a8ea1",
+            "label": "Events Information Message",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "When using this block the page layout will be adjusted to an events template. By removing the block you will revert back to a default page layout.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_6401d90b87618",
+            "label": "Date, Time & Location",
+            "name": "date_time_location",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_640201f7b214a",
+                    "label": "Start Date & Time",
+                    "name": "start_date_time",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "F j, Y g:i a",
+                    "return_format": "d\/m\/Y g:i a",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_64020216b214b",
+                    "label": "End Date & Time",
+                    "name": "end_date_time",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y g:i a",
+                    "return_format": "d\/m\/Y g:i a",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_6402197927ff9",
+                    "label": "Location",
+                    "name": "location",
+                    "aria-label": "",
+                    "type": "google_map",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "center_lat": "",
+                    "center_lng": "",
+                    "zoom": "",
+                    "height": ""
+                }
+            ]
+        },
+        {
+            "key": "field_6401e28bc9f0d",
+            "label": "Ticket Information",
+            "name": "ticket_information",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6401e32fc9f0e",
+                    "label": "Ticket URL",
+                    "name": "ticket_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6401e33bc9f0f",
+                    "label": "Ticket Price(s)",
+                    "name": "ticket_prices",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Enter the exact amount or the range if multiple ticket options are available.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/events-information"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1677862297
+}

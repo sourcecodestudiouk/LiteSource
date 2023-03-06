@@ -1,0 +1,44 @@
+.single-event{
+    main{
+        .events-template-container{
+            display:flex;
+            justify-content: space-between;
+            align-items: stretch;
+            .events-content{
+                width:70%;
+                padding-right:75px;
+                min-height:1000px;
+                .date-location{
+                    width:100%;
+                    border:1px solid #eee;
+                    background-color:#eee;
+                    display:flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    padding:25px;
+                    margin-bottom:50px;
+                    .date-time, .location{
+                        width:47.5%;
+                    }
+                }
+            }
+            .location-ticket{
+                width:30%;
+                .inner{
+                    position: sticky;
+                    top:125px;
+                    padding-bottom:25px;
+                    .map-container{
+                        height:300px;
+                        width:100%;
+                        background-color:#eee;
+                    }
+                    .ticket-information{
+                        margin-top:25px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,65 +2,100 @@
 
 // Main Navigation
 function header_nav() {
+    $colours = get_field('site_colours', 'options');
+    $primary = $colours['primary'];
+    $txtCol = getContrastColor($primary);
+    $secondary = $colours['secondary'];
+    $ddcol = getContrastColor($secondary);
     ?>
-    <div class="nav-container">
+    <nav class="desktop-navigation">
       <?php
       $menu_name = 'header-menu';
       $locations = get_nav_menu_locations();
       $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
       $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) ); ?>
-      <nav class="desktop-nav" role="navigation">
-        <ul class="main-nav">
+        <ul class="navigation-container">
             <?php
             $count = 0;
+            $topCount = 1;
+            $totalCount = 1;
             $submenu = false;
             if($menuitems){
               foreach( $menuitems as $item ):
                   // set up title and url
+                  $totalCount++;
                   $title = $item->title;
                   $link = $item->url;
                   $ID = $item->ID;
-                  $description = get_field('page_description', $item->object_id);
                   // item does not have a parent so menu_item_parent equals 0 (false)
                   if ( !$item->menu_item_parent ):
                   // save this id for later comparison with sub-menu items
                   $parent_id = $item->ID;?>
                   <li class="item parent-link">
-                      <p class="title"><a href="<?php echo $link; ?>"><span class="text"><?php echo $title; ?></span></a> </p>
+                      <p class="title"><a href="<?php echo $link; ?>" style="<?= $txtCol; ?>"><span class="text"><?php echo $title; $topCount++; ?></span></a> </p>
                       <?php endif; ?>
                           <?php if ( $parent_id == $item->menu_item_parent ): ?>
                               <?php if ( !$submenu ): $submenu = true;?>
-                              <ul class="sub-menu">
-                                <div class="sub-menu-container">
-                                  <div class="sub-content">
-                                    <div class="buttons">
-                                      <p class="btn"><a style="color:<?php echo $secbtncolour; ?>" href="sponsors">All Sponsors</a></p>
-                                      <p class="btn"><a style="color:<?php echo $pribtncolour; ?>" href="sponsorship-opportunities">Opportunities</a></p>
-                                    </div>
-                                  </div>
-                                  <div class="menu-items">
+                              <i class="fa-solid fa-chevron-down"></i>
+                              <ul class="sub-menu" style="background-color:<?= $secondary; ?>">
+                              
                                   <?php endif; ?>
-                                    <li class="item child-link">
+                                    <li class="item child-link" style="border-color:<?= $ddcol; ?>">
                                         <a href="<?php echo $link; ?>" class="title">
-                                          <span class="text"><?php echo $title; ?></span>
-                                          <span class="description">  <?php echo $description; ?></span>
+                                          <span style="color:<?= $ddcol; ?>" class="text"><?php echo $title; ?></span>
+                                          <span style="background-color:<?= $ddcol; ?>" class="background"></span>
                                         </a>
                                     </li>
                                   <?php if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ):
                                     ?>
-                                  </div>
-                                </div>
+                                  
                               </ul>
                               <?php $submenu = false; endif; ?>
-                          <?php endif; ?>
-                      <?php if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id ): ?>
-                      </li>
-                  <?php $submenu = false; endif; ?>
-              <?php $count++; endforeach; ?>
+                       <?php endif; ?>
+                      <?php 
+                      if($item->menu_item_parent){ 
+                        if ($menuitems[ $count + 1 ]->menu_item_parent != $parent_id ): ?>
+                          </li>
+                      <?php $submenu = false; endif; 
+                      }
+                      if($topCount == 5){
+                        break;
+                      }
+              $count++; endforeach; ?>
+              
             <?php
+
+            if($topCount == 5){
+              $menuitems = array_slice($menuitems, $totalCount - 1); 
+              if(count($menuitems) > 1){ ?>
+                <li class="item parent-link">
+                    <p class="title"><a href="<?php echo $link; ?>"><span class="text">More</span></a> </p>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <ul class="sub-menu" style="background-color:<?= $secondary; ?>">
+                    <?php
+                       foreach($menuitems as $item){ 
+                          $title = $item->title;
+                          $link = $item->url; ?>
+                          <li class="item child-link" style="border-color:<?= $ddcol; ?>">
+                             <a href="<?php echo $link; ?>" class="title"><span style="color:<?= $ddcol; ?>" class="text"><?php echo $title; ?></span><span  style="background-color:<?= $ddcol; ?>" class="background"></span></a>
+                          </li>
+                        <?php } ?>
+                    </ul>
+                </li>
+              <?php 
+              }
+              else{ ?>
+               <li class="item parent-link">
+                <p class="title"><a href="<?php echo $menuitems[0]->url; ?>" class="title"><span class="text"><?php echo $menuitems[0]->title; ?></span></a></p>
+              </li>
+              <?php
+              }?>
+               
+            <?php
+            }
             } ?>
           </ul>
-        </nav>
-    </div>
+      
+      </nav>
 <?php
 }

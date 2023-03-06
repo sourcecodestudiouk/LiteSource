@@ -34,6 +34,29 @@ if(!current_user_can( 'edit_posts' )){
 	add_action('admin_menu', 'post_remove');   //adding action for triggering function call
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Add new menu link to Dashboard
+
+function wpdocs_register_my_custom_menu_page() {
+	add_menu_page(
+		__( 'Custom Menu Title', 'textdomain' ),
+		'Visit Site',
+		'manage_options',
+		get_site_url(),
+		'',
+		'dashicons-admin-home',
+		1
+	);
+}
+add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Disable Live Editing from WP Editor
+
+add_action( 'customize_preview_init', function() {
+  die("The customizer is disabled. Please save and preview your site on the frontend.");
+}, 1);
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // User Profile Feature
@@ -108,5 +131,4 @@ function pw_load_scripts($hook) {
 	wp_enqueue_script( 'custom-js', '/wp-content/themes/lms/assets/js/dashboard.js' );
 }
 add_action('admin_enqueue_scripts', 'pw_load_scripts');
-
 ?>
