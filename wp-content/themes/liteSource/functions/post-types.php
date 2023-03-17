@@ -130,7 +130,7 @@ function scs_post_types() {
 			"rewrite" => [ "slug" => "team-member", "with_front" => true ],
 			"query_var" => true,
 			"menu_icon" => "dashicons-admin-users",
-			"supports" => [ "title" ],
+			"supports" => [ "title", "thumbnail" ],
 			"show_in_graphql" => false,
 		];
 

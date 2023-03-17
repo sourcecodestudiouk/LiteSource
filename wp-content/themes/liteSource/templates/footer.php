@@ -7,8 +7,10 @@
   $menus = get_field('menu_columns', 'options');
   $company_description = get_field('company_description', 'options');
   $email = get_field('email_address', 'options');
-  $telephone = get_field('telephone', 'options');
-  $email = get_field('email_address', 'options');
+  $telephone = get_field('telephone_number', 'options');
+  $address = get_field('address', 'options');
+  $vat = get_field('vat_number', 'options');
+  $company = get_field('company_number', 'options');
 ?>
 
 <footer class="site-footer" role="contentinfo" style="background-color:<?= $colours['primary']; ?>; color:<?= $txtCol; ?>">
@@ -20,7 +22,21 @@
     <h2><?= get_bloginfo(); ?></h2>
     <p class="company-description"><?= $company_description; ?></p>
     <div class="contact-details">
-
+      <?php 
+      if(isset($email)){ ?>
+        <p><a href="mailto:<?= $email; ?>"><i class="fa-solid fa-envelope"></i><?= $email; ?></a></p>
+      <?php
+      } ?>
+      <?php 
+      if(isset($telephone)){ ?>
+       <p><a href="tel:<?= $telephone; ?>"><i class="fa-solid fa-phone"></i><?= $telephone; ?></a></p>
+      <?php
+      } ?>
+      <?php 
+      if(isset($address)){ ?>
+        <p><a target="_blank" href="https://www.google.com/maps/dir//<?= $address; ?>"><i class="fa-solid fa-location-dot"></i><?= $address; ?></a></p>
+      <?php
+      } ?>
     </div>
     <?php get_template_part('templates/partials/social-media'); ?>
   <?php

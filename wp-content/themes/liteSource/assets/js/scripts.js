@@ -96,6 +96,15 @@
 			// Sliders
 			/////////////////////////////////////////////////////////////////////////////////
 
+			$('.testimonial-slider').slick({
+				infinite: true,
+				autoplay: true,
+				autoplaySpeed: 5000,
+				slidesToShow:1,
+				arrows:true,
+				dots:false,
+			})
+
 			$('.slider-gallery').slick({
 			  infinite: false,
 				autoplay: true,
@@ -130,6 +139,71 @@
 			    // instead of a settings object
 			  ]
 			});
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Drag Sliders
+			/////////////////////////////////////////////////////////////////////////////////
+
+			if ($('.previous-next-auctions-block').length){
+				var slider = document.querySelector('.previous-next-auctions-block .slider-content-container');
+				slider_controls(slider);
+			}
+
+			if ($('.related-content-block').length){
+				var slider = document.querySelector('.related-content-block .slider-content-container');
+				slider_controls(slider);
+			}
+
+			if ($('.sale-highlights-block').length){
+				var slider = document.querySelector('.sale-highlights-block .slider-content-container');
+				slider_controls(slider);
+			}
+
+			if ($('.events-slider-block').length){
+				var slider = document.querySelector('.events-slider-block .slider-content-container');
+				slider_controls(slider);
+			}
+
+			if ($('.team-profiles-block').length){
+				var slider = document.querySelector('.team-profiles-block .slider-content-container');
+				slider_controls(slider);
+			}
+
+			if ($('.testimonials-block.multiple-slider').length){
+				var slider = document.querySelector('.testimonials-block.multiple-slider .slider-content-container');
+				slider_controls(slider);
+			}
+
+
+			function slider_controls(slider){
+				let isDown = false;
+				let startX;
+				let scrollLeft;
+				slider.addEventListener('mousedown', (e) => {
+					isDown = true;
+					slider.classList.add('active');
+					startX = e.pageX - slider.offsetLeft;
+					scrollLeft = slider.scrollLeft;
+				});
+				slider.addEventListener('mouseleave', () => {
+					isDown = false;
+					slider.classList.remove('active');
+				});
+				slider.addEventListener('mouseup', () => {
+					isDown = false;
+					slider.classList.remove('active');
+				});
+				slider.addEventListener('mousemove', (e) => {
+					if(!isDown) return;
+					e.preventDefault();
+					const x = e.pageX - slider.offsetLeft;
+					const walk = (x - startX) * 3; //scroll-fast
+					slider.scrollLeft = scrollLeft - walk;
+					console.log(walk);
+				});
+			}
+
+			
 			
 
 

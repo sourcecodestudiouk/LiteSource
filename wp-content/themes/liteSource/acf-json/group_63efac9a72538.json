@@ -16,7 +16,13 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "Gloock - Roboto": "Gloock - Roboto",
+                "Montserrat - Source Sans Pro": "Montserrat - Source Sans Pro",
+                "Josefin Sans - Lato": "Josefin Sans - Lato",
+                "Poppins (Bold) - Poppins (regular)": "Poppins (Bold) - Poppins (regular)",
+                "Oswald - Open Sans": "Oswald - Open Sans"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -248,5 +254,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1676994130
+    "modified": 1678372724
 }

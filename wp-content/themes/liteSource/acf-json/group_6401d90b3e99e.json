@@ -22,62 +22,51 @@
         },
         {
             "key": "field_6401d90b87618",
-            "label": "Date, Time & Location",
-            "name": "date_time_location",
+            "label": "Date & Time",
+            "name": "date_time",
             "aria-label": "",
-            "type": "group",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Date",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_640201f7b214a",
-                    "label": "Start Date & Time",
-                    "name": "start_date_time",
+                    "key": "field_6409b310200f3",
+                    "label": "Event Date",
+                    "name": "event_date",
                     "aria-label": "",
-                    "type": "date_time_picker",
+                    "type": "date_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "25",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "F j, Y g:i a",
-                    "return_format": "d\/m\/Y g:i a",
-                    "first_day": 1
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1,
+                    "parent_repeater": "field_6401d90b87618"
                 },
                 {
-                    "key": "field_64020216b214b",
-                    "label": "End Date & Time",
-                    "name": "end_date_time",
+                    "key": "field_6409b325200f4",
+                    "label": "Start Time",
+                    "name": "start_time",
                     "aria-label": "",
-                    "type": "date_time_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "display_format": "d\/m\/Y g:i a",
-                    "return_format": "d\/m\/Y g:i a",
-                    "first_day": 1
-                },
-                {
-                    "key": "field_6402197927ff9",
-                    "label": "Location",
-                    "name": "location",
-                    "aria-label": "",
-                    "type": "google_map",
+                    "type": "time_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -86,12 +75,48 @@
                         "class": "",
                         "id": ""
                     },
-                    "center_lat": "",
-                    "center_lng": "",
-                    "zoom": "",
-                    "height": ""
+                    "display_format": "g:i a",
+                    "return_format": "g:i a",
+                    "parent_repeater": "field_6401d90b87618"
+                },
+                {
+                    "key": "field_6409b32f200f5",
+                    "label": "End Time",
+                    "name": "end_time",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a",
+                    "parent_repeater": "field_6401d90b87618"
                 }
             ]
+        },
+        {
+            "key": "field_6402197927ff9",
+            "label": "Location",
+            "name": "location",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
         },
         {
             "key": "field_6401e28bc9f0d",
@@ -167,5 +192,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1677862297
+    "modified": 1678357501
 }

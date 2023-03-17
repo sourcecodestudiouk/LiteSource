@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Events Slider
+ * Testimonials
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -10,13 +10,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'events-slider-' . $block['id'];
+$id = 'testimonials-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'events-slider-block';
+$className = 'testimonials-block';
 if( !empty($block['className']) ) {
     $className .= ' ' . $block['className'];
 }
@@ -24,44 +24,50 @@ if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
 
-$type = 'slider';
+$type = get_field('type');
+$testimonials = get_field('testimonials_to_show');
 
-$events = get_posts(array('post_type' => 'events', 'posts_per_page' => '10', 'orderby'=>'menu_order', 'fields' => 'ids'));
+if($testimonials == 'selected'){
+  $selected = get_field('selected_testimonials');
+}
+else{
+  $selected = get_posts(array('post_type' => 'testimonials', 'posts_per_page' => '-1', 'orderby'=>'menu_order'));
+}
 
+$theme = get_field('theme');
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> content-grid-slider <?= $type; ?>">
-  <?php if(!is_page('team')){ ?>
+  <?php if($type == 'multiple-slider'){ ?>
     <div class="container">
-      <h4>Upcoming Events</h4>
-      <p class="btn"><a href="/team">View All Events</a></p>
+      <h4>Testimonials</h4>
     </div>
-
   <?php
   } ?>
-  <?php if($type == 'slider'){ ?>
+  <?php if($type == 'multiple-slider'){ ?>
     <div class="slider-container">
       <div class="slider-content-container">
         <div class=slider-content>
   <?php
   }
   else{ ?>
-    <div class="content-grid">
-      <div class="container">
+    <div class="container outter-container">
+    <div class="testimonial-slider">
+      
   <?php
   }?>
     <?php
     $currentID = get_the_ID();
-    $args = array( 'post_type' => array('event') , 'post__in' => $events, 'post__not_in' => array($currentID), 'posts_per_page' => '-1', 'order' => 'ASC', 'orderby' => 'menu_order');
+    $args = array( 'post_type' => array('testimonial') , 'post__in' => $selected, 'post__not_in' => array($currentID), 'posts_per_page' => '-1', 'order' => 'ASC', 'orderby' => 'menu_order');
     $post_query = new WP_Query($args);
     if($post_query->have_posts() ) {
       while($post_query->have_posts() ) { $post_query->the_post();
-        get_template_part('/templates/cards/event', 'card');
+        get_template_part('/templates/cards/testimonial', 'card', array('type' => $type, 'theme' => $theme));
       }
     }
     wp_reset_postdata();
     ?>
-    <?php if($type == 'slider'){ ?>
+    <?php if($type == 'multiple-slider'){ ?>
       </div>
     </div>
   </div>

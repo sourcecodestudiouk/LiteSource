@@ -146,5 +146,78 @@ include_once( get_template_directory() . '/functions/admin-notices.php' );
 include_once( get_template_directory() . '/functions/template-content.php' );
 
 
+/**
+ * Plugin Name: UFSM - Forminator Configurações Personalizadas
+ * Version: 1
+ * Description: Addon para extender as funcionalidades do Plugin Forminator da WPMUDEV
+ * Author: UFSM
+ * Author URI: https://www.ufsm.br
+ * Text Domain: ufsmforminator
+ */
+ 
+//Essa classe permite modificar o comportamento padrão do plugin Forminator da empresa WPMUDEV para às necessidades da UFSM.
 
+class Forminator_Admin_Custom {
+
+    // Inicia os filtros
+    public function __construct() {
+        add_action( 'admin_menu', array($this,'run_filters'),1);
+    }
+
+    public function run_filters()
+    {
+        //Tradução para os menus básicos
+        add_filter( 'gettext', array($this,'translate_forminator_menus'), 20, 3 );
+        //Remover as permissões para usuários sem permissão de manage_options
+        add_action( 'admin_menu', array($this,'forminator_menu_permissions'), 999 );
+        //Aqui hookamos na permissão que possibilita o usuário de criar 
+        add_filter( 'forminator_admin_cap', array($this,'my_cap_forms') );
+    }
+
+    public function my_cap_forms()
+    {
+        //Aqui é a nova permissão mínima de acesso ao forminator, esse usuário poderá ver as submissões, porém apenas
+        //usuários com permissão de "manage_options" poderão criar forms, polls e quizes.
+        return 'editor';    
+    }
+
+    public function forminator_menu_permissions() {
+        //Se o usuário não tiver a permissão de gerenciar opções removemos o acesso aos menus.
+        if ( ! current_user_can( 'manage_options' ) ) {
+            remove_submenu_page( 'forminator','forminator' );
+            //remove_submenu_page( 'forminator','forminator-cform' );
+            remove_submenu_page( 'forminator','forminator-quiz' );
+            remove_submenu_page( 'forminator','forminator-poll' );
+            remove_submenu_page( 'forminator','forminator-settings' );
+            remove_submenu_page( 'forminator','forminator-integrations' );
+            remove_submenu_page( 'forminator','forminator-cform-wizard' );
+            remove_submenu_page( 'forminator','forminator-poll-wizard' );
+            remove_submenu_page( 'forminator','forminator-nowrong-wizard' );
+            remove_submenu_page( 'forminator','forminator-knowledge-wizard' );
+            remove_submenu_page( 'forminator', 'forminator-settings' );
+            remove_submenu_page( 'forminator', ' forminator-addons' );
+            remove_submenu_page( 'forminator', ' forminator-upgrade' );
+
+
+           
+        } 
+    }
+
+    //Tradução dos menus básicos do forminator para pt-br enquanto não sai a tradução.
+    public function translate_forminator_menus( $translated_text, $text, $domain ) {
+        switch ( $translated_text ) {
+            case 'Forminator' :
+                $translated_text = __( 'Forms', 'forminator' );
+                break;
+            // case 'Submissions' :
+            //     $translated_text = __( 'Submissions', 'submissions' );
+            //     break;
+        }
+        return $translated_text;
+    }
+    
+}
+
+//Instanciamos o objeto
+$ufsm_forms = new Forminator_Admin_Custom();
 ?>

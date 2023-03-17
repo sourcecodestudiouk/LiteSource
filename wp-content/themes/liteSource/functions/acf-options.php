@@ -13,6 +13,10 @@ function my_acf_init_block_types() {
 
       $addons = get_field('modular_addons', 'admin-settings');
 
+      $postTypes = get_field('post_types', 'options');
+
+      //var_dump($postTypes);
+
       if(in_array('events', $addons)){
           acf_register_block_type(array(
             'name'              => 'Events Card Slider',
@@ -44,7 +48,64 @@ function my_acf_init_block_types() {
             'keywords'          => array( 'events', 'calendar' ),
           ));
         }
-        
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Team Post Type Related Blocks
+
+        if(in_array('team', $postTypes)){
+          acf_register_block_type(array(
+            'name'              => 'Team Profiles',
+            'title'             => __('Team Profiles'),
+            'description'       => __('A block to display the team profiles in either a slider or a grid'),
+            'render_template'   => 'templates/blocks/team-profiles.php',
+            'category'          => 'team-content',
+            'icon'              => $icon,
+            'keywords'          => array( 'team', 'slider', 'grid', 'content' ),
+          ));
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Service Post Type Related Blocks
+
+        if(in_array('services', $postTypes)){
+          acf_register_block_type(array(
+            'name'              => 'Services Overview',
+            'title'             => __('Services Overview'),
+            'description'       => __('A block to display the service cards in either a slider or a grid'),
+            'render_template'   => 'templates/blocks/services-overview.php',
+            'category'          => 'team-content',
+            'icon'              => $icon,
+            'keywords'          => array( 'services', 'slider', 'grid', 'content' ),
+          ));
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Testimonial Post Type Related Blocks
+        if(in_array('testimonials', $postTypes)){
+          acf_register_block_type(array(
+            'name'              => 'Testimonials',
+            'title'             => __('Testimonials'),
+            'description'       => __('A block to display the customer testimonials in either a slider or a full width block'),
+            'render_template'   => 'templates/blocks/testimonials.php',
+            'category'          => 'testimonials',
+            'icon'              => $icon,
+            'keywords'          => array( 'testimonials', 'slider', 'grid', 'content' ),
+          ));
+        }
+
+         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Testimonial Post Type Related Blocks
+        if(in_array('news', $postTypes)){
+          acf_register_block_type(array(
+            'name'              => 'Latest News',
+            'title'             => __('Latest News'),
+            'description'       => __('A block to display the news in either a slider or a full width block'),
+            'render_template'   => 'templates/blocks/latest-news.php',
+            'category'          => 'news',
+            'icon'              => $icon,
+            'keywords'          => array( 'news', 'slider', 'grid', 'content' ),
+          ));
+        }
 
         // acf_register_block_type(array(
         //     'name'              => 'Contact Form',
@@ -116,6 +177,8 @@ function my_acf_init_block_types() {
         //     'keywords'          => array( 'image', 'full width' ),
         // ));
 
+
+
         acf_register_block_type(array(
           'name'              => 'Page Header',
           'title'             => __('Page Header'),
@@ -126,21 +189,15 @@ function my_acf_init_block_types() {
           'keywords'          => array( 'header', 'title', 'page' ),
         ));
 
-        if (is_singular('event')) {
-          if(has_block( 'acf/events-information')){
-            acf_register_block_type(array(
-              'name'              => 'Hero Header',
-              'title'             => __('Hero Header'),
-              'description'       => __('Hero Header Block'),
-              'render_template'   => 'templates/blocks/hero-header.php',
-              'category'          => 'custom-layout',
-              'icon'              => $icon,
-              'keywords'          => array( 'header', 'title', 'hero' ),
-          ));
-          }
-        }
-
-       
+        acf_register_block_type(array(
+          'name'              => 'Hero Header',
+          'title'             => __('Hero Header'),
+          'description'       => __('Hero Header Block'),
+          'render_template'   => 'templates/blocks/hero-header.php',
+          'category'          => 'custom-layout',
+          'icon'              => $icon,
+          'keywords'          => array( 'header', 'title', 'hero' ),
+        ));
 
         acf_register_block_type(array(
           'name'              => 'Call To Action',
@@ -295,7 +352,7 @@ if( function_exists('acf_add_options_page') ) {
 function my_acf_google_map_api( $api ){
   $key = get_field('google_maps_api_key', 'options');
   $api['key'] = $key;
-  $api['key'] = 'AIzaSyDia5ipGECIFAC_xdj6b-OdKm1rNkgfji8';
+  $api['key'] = 'AIzaSyDwuAmO85Z0y59Ey2Gjn_ib39a-6mW4xhA';
   return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');

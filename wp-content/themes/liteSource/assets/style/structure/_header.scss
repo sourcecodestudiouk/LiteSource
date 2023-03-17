@@ -17,9 +17,12 @@
     height:100px;
     padding:25px 15px;
     .logo-container{
+      height:100%;
       .logo{
         width:200px;
-        height:auto;
+        height:100%;
+        object-fit: contain;
+        object-position: left;
       }
     }
     .desktop-navigation{

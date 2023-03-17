@@ -44,9 +44,9 @@ function my_remove_admin_menus() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gutenberg Block - ONLY USE THE ONES YOU WANT.
 
-add_filter( 'allowed_block_types_all', 'misha_allowed_block_types', 25, 2 );
+add_filter( 'allowed_block_types_all', 'allowed_block_types', 25, 2 );
 
-function misha_allowed_block_types( $allowed_blocks, $editor_context ) {
+function allowed_block_types( $allowed_blocks, $editor_context ) {
 
 	return array(
 		'core/image',
@@ -68,13 +68,21 @@ function misha_allowed_block_types( $allowed_blocks, $editor_context ) {
 		'core/preformatted',
 		'core/heading',
 		'core/paragraph',
+		
 
 		// Core Bespoke Blocks
 		'acf/hero-header',
 		'acf/page-header',
-		
 		'acf/call-to-action',
 		'acf/content-slider',
+
+		// Team Content
+		'acf/team-profiles',
+		'acf/testimonials',
+
+		// News Blocks
+		'acf/latest-news',
+
 
 		// Events Module Blocks
 		'acf/events-card-slider',

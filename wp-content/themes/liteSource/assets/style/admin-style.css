@@ -118,3 +118,7 @@ html.wp-toolbar {
 .hide-if-no-customize {
   display: none;
 }
+
+.sui-footer, .sui-footer-nav, .sui-footer-social, .sui-image {
+  display: none !important;
+}

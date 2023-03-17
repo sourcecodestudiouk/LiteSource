@@ -140,3 +140,9 @@ html.wp-toolbar{
 .hide-if-no-customize{
   display: none;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Forminator Admin
+.sui-footer, .sui-footer-nav, .sui-footer-social, .sui-image{
+  display:none!important;
+}

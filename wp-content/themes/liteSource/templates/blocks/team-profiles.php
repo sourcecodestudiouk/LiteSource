@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Events Slider
+ * Team Profiles
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -10,13 +10,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'events-slider-' . $block['id'];
+$id = 'team-profiles-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'events-slider-block';
+$className = 'team-profiles-block';
 if( !empty($block['className']) ) {
     $className .= ' ' . $block['className'];
 }
@@ -24,17 +24,24 @@ if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
 
-$type = 'slider';
+$type = get_field('type');
+$profiles = get_field('profiles_to_show');
 
-$events = get_posts(array('post_type' => 'events', 'posts_per_page' => '10', 'orderby'=>'menu_order', 'fields' => 'ids'));
-
+if($profiles == 'selected'){
+  $profiles = get_field('selected_profiles');
+  //var_dump($selected);
+  //$profiles = get_posts(array('post_type' => 'team_members', 'posts_per_page' => '-1', 'orderby'=>'menu_order', 'fields' => 'id'));
+}
+else{
+  $profiles = get_posts(array('post_type' => 'team_members', 'posts_per_page' => '-1', 'orderby'=>'menu_order'));
+}
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> content-grid-slider <?= $type; ?>">
   <?php if(!is_page('team')){ ?>
     <div class="container">
-      <h4>Upcoming Events</h4>
-      <p class="btn"><a href="/team">View All Events</a></p>
+      <h4>Team Members</h4>
+      <p class="btn"><a href="/team">View All Team</a></p>
     </div>
 
   <?php
@@ -52,11 +59,11 @@ $events = get_posts(array('post_type' => 'events', 'posts_per_page' => '10', 'or
   }?>
     <?php
     $currentID = get_the_ID();
-    $args = array( 'post_type' => array('event') , 'post__in' => $events, 'post__not_in' => array($currentID), 'posts_per_page' => '-1', 'order' => 'ASC', 'orderby' => 'menu_order');
+    $args = array( 'post_type' => array('team_member') , 'post__in' => $profiles, 'post__not_in' => array($currentID), 'posts_per_page' => '-1', 'order' => 'ASC', 'orderby' => 'menu_order');
     $post_query = new WP_Query($args);
     if($post_query->have_posts() ) {
       while($post_query->have_posts() ) { $post_query->the_post();
-        get_template_part('/templates/cards/event', 'card');
+        get_template_part('/templates/cards/team', 'card');
       }
     }
     wp_reset_postdata();

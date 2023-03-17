@@ -1,28 +1,29 @@
 {
-    "key": "group_64060745c1563",
-    "title": "OPTIONS: Company Info",
+    "key": "group_6408724bb7120",
+    "title": "CPT: Team Member",
     "fields": [
         {
-            "key": "field_6406074685eb6",
-            "label": "Email Address",
-            "name": "email_address",
+            "key": "field_6408724c4dfc9",
+            "label": "Job Title",
+            "name": "job_title",
             "aria-label": "",
-            "type": "email",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_640608f7abff0",
+            "key": "field_640872634dfca",
             "label": "Telephone Number",
             "name": "telephone_number",
             "aria-label": "",
@@ -42,11 +43,30 @@
             "append": ""
         },
         {
-            "key": "field_64060909abff1",
-            "label": "Address",
-            "name": "address",
+            "key": "field_6408726d4dfcb",
+            "label": "Email Address",
+            "name": "email_address",
             "aria-label": "",
-            "type": "text",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6408727d4dfcc",
+            "label": "Bio",
+            "name": "bio",
+            "aria-label": "",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -56,58 +76,18 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6409a5c6190c8",
-            "label": "Company Number",
-            "name": "company_number",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "If applicable.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6409a5e5190c9",
-            "label": "VAT Number",
-            "name": "vat_number",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "If applicable.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "post_type",
                 "operator": "==",
-                "value": "company-info"
+                "value": "team_member"
             }
         ]
     ],
@@ -120,5 +100,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678353923
+    "modified": 1678279293
 }
