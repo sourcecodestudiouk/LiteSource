@@ -66,9 +66,10 @@ function scs_post_types() {
 			"menu_icon" => "dashicons-format-quote",
 			"supports" => [ "title" ],
 		];
-
-		if(in_array('testimonials', $postTypes)){
-			register_post_type( "testimonial", $args );
+		if(isset($postTypes)){
+			if(in_array('testimonials', $postTypes)){
+				register_post_type( "testimonial", $args );
+			}
 		}
 		////////////////////////////////////////////////////////////////////////////////
 		// Team Members Post Type
@@ -134,8 +135,10 @@ function scs_post_types() {
 			"show_in_graphql" => false,
 		];
 
-		if(in_array('team', $postTypes)){
-			register_post_type( "team_member", $args );
+		if(isset($postTypes)){
+			if(in_array('team', $postTypes)){
+				register_post_type( "team_member", $args );
+			}
 		}
 
 
@@ -202,9 +205,10 @@ function scs_post_types() {
 			"supports" => [ "title", "editor", "thumbnail" ],
 			"show_in_graphql" => false,
 		];
-
-		if(in_array('services', $postTypes)){
-			register_post_type( "service", $args );
+		if(isset($postTypes)){
+			if(in_array('services', $postTypes)){
+				register_post_type( "service", $args );
+			}
 		}
 
 
@@ -269,75 +273,79 @@ function scs_post_types() {
 			"show_in_graphql" => false,
 		];
 
-		if(in_array('projects', $postTypes)){
-			register_post_type( "project", $args );
+		if(isset($postTypes)){
+			if(in_array('projects', $postTypes)){
+				register_post_type( "project", $args );
+			}
 		}
 
-		if(in_array('events', $addons)){
+		if(isset($addons)){
+			if(in_array('events', $addons)){
 
-			$labels = [
-				"name" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
-				"singular_name" => esc_html__( "Event", "sourcecodestudio-lite-source" ),
-				"menu_name" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
-				"all_items" => esc_html__( "All Events", "sourcecodestudio-lite-source" ),
-				"add_new" => esc_html__( "Add new", "sourcecodestudio-lite-source" ),
-				"add_new_item" => esc_html__( "Add new Event", "sourcecodestudio-lite-source" ),
-				"edit_item" => esc_html__( "Edit Event", "sourcecodestudio-lite-source" ),
-				"new_item" => esc_html__( "New Event", "sourcecodestudio-lite-source" ),
-				"view_item" => esc_html__( "View Event", "sourcecodestudio-lite-source" ),
-				"view_items" => esc_html__( "View Events", "sourcecodestudio-lite-source" ),
-				"search_items" => esc_html__( "Search Events", "sourcecodestudio-lite-source" ),
-				"not_found" => esc_html__( "No Events found", "sourcecodestudio-lite-source" ),
-				"not_found_in_trash" => esc_html__( "No Events found in trash", "sourcecodestudio-lite-source" ),
-				"parent" => esc_html__( "Parent Event:", "sourcecodestudio-lite-source" ),
-				"featured_image" => esc_html__( "Featured image for this Event", "sourcecodestudio-lite-source" ),
-				"set_featured_image" => esc_html__( "Set featured image for this Event", "sourcecodestudio-lite-source" ),
-				"remove_featured_image" => esc_html__( "Remove featured image for this Event", "sourcecodestudio-lite-source" ),
-				"use_featured_image" => esc_html__( "Use as featured image for this Event", "sourcecodestudio-lite-source" ),
-				"archives" => esc_html__( "Event archives", "sourcecodestudio-lite-source" ),
-				"insert_into_item" => esc_html__( "Insert into Event", "sourcecodestudio-lite-source" ),
-				"uploaded_to_this_item" => esc_html__( "Upload to this Event", "sourcecodestudio-lite-source" ),
-				"filter_items_list" => esc_html__( "Filter Events list", "sourcecodestudio-lite-source" ),
-				"items_list_navigation" => esc_html__( "Events list navigation", "sourcecodestudio-lite-source" ),
-				"items_list" => esc_html__( "Events list", "sourcecodestudio-lite-source" ),
-				"attributes" => esc_html__( "Events attributes", "sourcecodestudio-lite-source" ),
-				"name_admin_bar" => esc_html__( "Event", "sourcecodestudio-lite-source" ),
-				"item_published" => esc_html__( "Event published", "sourcecodestudio-lite-source" ),
-				"item_published_privately" => esc_html__( "Event published privately.", "sourcecodestudio-lite-source" ),
-				"item_reverted_to_draft" => esc_html__( "Event reverted to draft.", "sourcecodestudio-lite-source" ),
-				"item_scheduled" => esc_html__( "Event scheduled", "sourcecodestudio-lite-source" ),
-				"item_updated" => esc_html__( "Event updated.", "sourcecodestudio-lite-source" ),
-				"parent_item_colon" => esc_html__( "Parent Event:", "sourcecodestudio-lite-source" ),
-			];
-			
-			$args = [
-				"label" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
-				"labels" => $labels,
-				"description" => "",
-				"public" => true,
-				"publicly_queryable" => true,
-				"show_ui" => true,
-				"show_in_rest" => true,
-				"rest_base" => "",
-				"rest_controller_class" => "WP_REST_Posts_Controller",
-				"rest_namespace" => "wp/v2",
-				"has_archive" => false,
-				"show_in_menu" => true,
-				"show_in_nav_menus" => true,
-				"delete_with_user" => false,
-				"exclude_from_search" => false,
-				"capability_type" => "post",
-				"map_meta_cap" => true,
-				"hierarchical" => false,
-				"can_export" => false,
-				"rewrite" => [ "slug" => "event", "with_front" => true ],
-				"menu_icon" => "dashicons-calendar-alt",
-				"query_var" => true,
-				"supports" => [ "title", "editor", "thumbnail" ],
-				"show_in_graphql" => false,
-			];
+				$labels = [
+					"name" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
+					"singular_name" => esc_html__( "Event", "sourcecodestudio-lite-source" ),
+					"menu_name" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
+					"all_items" => esc_html__( "All Events", "sourcecodestudio-lite-source" ),
+					"add_new" => esc_html__( "Add new", "sourcecodestudio-lite-source" ),
+					"add_new_item" => esc_html__( "Add new Event", "sourcecodestudio-lite-source" ),
+					"edit_item" => esc_html__( "Edit Event", "sourcecodestudio-lite-source" ),
+					"new_item" => esc_html__( "New Event", "sourcecodestudio-lite-source" ),
+					"view_item" => esc_html__( "View Event", "sourcecodestudio-lite-source" ),
+					"view_items" => esc_html__( "View Events", "sourcecodestudio-lite-source" ),
+					"search_items" => esc_html__( "Search Events", "sourcecodestudio-lite-source" ),
+					"not_found" => esc_html__( "No Events found", "sourcecodestudio-lite-source" ),
+					"not_found_in_trash" => esc_html__( "No Events found in trash", "sourcecodestudio-lite-source" ),
+					"parent" => esc_html__( "Parent Event:", "sourcecodestudio-lite-source" ),
+					"featured_image" => esc_html__( "Featured image for this Event", "sourcecodestudio-lite-source" ),
+					"set_featured_image" => esc_html__( "Set featured image for this Event", "sourcecodestudio-lite-source" ),
+					"remove_featured_image" => esc_html__( "Remove featured image for this Event", "sourcecodestudio-lite-source" ),
+					"use_featured_image" => esc_html__( "Use as featured image for this Event", "sourcecodestudio-lite-source" ),
+					"archives" => esc_html__( "Event archives", "sourcecodestudio-lite-source" ),
+					"insert_into_item" => esc_html__( "Insert into Event", "sourcecodestudio-lite-source" ),
+					"uploaded_to_this_item" => esc_html__( "Upload to this Event", "sourcecodestudio-lite-source" ),
+					"filter_items_list" => esc_html__( "Filter Events list", "sourcecodestudio-lite-source" ),
+					"items_list_navigation" => esc_html__( "Events list navigation", "sourcecodestudio-lite-source" ),
+					"items_list" => esc_html__( "Events list", "sourcecodestudio-lite-source" ),
+					"attributes" => esc_html__( "Events attributes", "sourcecodestudio-lite-source" ),
+					"name_admin_bar" => esc_html__( "Event", "sourcecodestudio-lite-source" ),
+					"item_published" => esc_html__( "Event published", "sourcecodestudio-lite-source" ),
+					"item_published_privately" => esc_html__( "Event published privately.", "sourcecodestudio-lite-source" ),
+					"item_reverted_to_draft" => esc_html__( "Event reverted to draft.", "sourcecodestudio-lite-source" ),
+					"item_scheduled" => esc_html__( "Event scheduled", "sourcecodestudio-lite-source" ),
+					"item_updated" => esc_html__( "Event updated.", "sourcecodestudio-lite-source" ),
+					"parent_item_colon" => esc_html__( "Parent Event:", "sourcecodestudio-lite-source" ),
+				];
+				
+				$args = [
+					"label" => esc_html__( "Events", "sourcecodestudio-lite-source" ),
+					"labels" => $labels,
+					"description" => "",
+					"public" => true,
+					"publicly_queryable" => true,
+					"show_ui" => true,
+					"show_in_rest" => true,
+					"rest_base" => "",
+					"rest_controller_class" => "WP_REST_Posts_Controller",
+					"rest_namespace" => "wp/v2",
+					"has_archive" => false,
+					"show_in_menu" => true,
+					"show_in_nav_menus" => true,
+					"delete_with_user" => false,
+					"exclude_from_search" => false,
+					"capability_type" => "post",
+					"map_meta_cap" => true,
+					"hierarchical" => false,
+					"can_export" => false,
+					"rewrite" => [ "slug" => "event", "with_front" => true ],
+					"menu_icon" => "dashicons-calendar-alt",
+					"query_var" => true,
+					"supports" => [ "title", "editor", "thumbnail" ],
+					"show_in_graphql" => false,
+				];
 
-			register_post_type( "event", $args );
+				register_post_type( "event", $args );
+			}
 		}
 
 	}

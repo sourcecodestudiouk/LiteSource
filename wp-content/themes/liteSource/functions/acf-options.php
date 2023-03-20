@@ -11,13 +11,14 @@ function my_acf_init_block_types() {
 
       $icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 94.85 53.05"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}.cls-3{fill:url(#linear-gradient-3);}</style><linearGradient id="linear-gradient" x1="16.01" x2="16.01" y2="45.19" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffbafa"/><stop offset="0.5" stop-color="#ffbafa"/><stop offset="1" stop-color="#3b027f"/></linearGradient><linearGradient id="linear-gradient-2" x1="78.84" y1="52.96" x2="78.84" y2="7.86" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-3" x1="22.54" y1="51.42" x2="72.31" y2="1.65" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3b027f"/><stop offset="1" stop-color="#ffbafa"/></linearGradient></defs><title>SCS-Icon-Grad</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M22.36,43.75l4.11-4.11.05,0L13.39,26.47l17-17a5.55,5.55,0,0,0-7.84-7.85L1.62,22.55h0a5.55,5.55,0,0,0,0,7.84L15.2,44A5.51,5.51,0,0,0,22.36,43.75Z"/><path class="cls-2" d="M80.13,9.48a5.54,5.54,0,0,0-7.64-.17l-4.1,4.1L81.46,26.47l-17,17A5.55,5.55,0,0,0,68.39,53a5.52,5.52,0,0,0,3.92-1.64L93.23,30.4h0a5.56,5.56,0,0,0,0-7.85"/><path class="cls-3" d="M72.31,1.65a5.53,5.53,0,0,0-7.82,0l0,0-.1.1L26.52,39.6l-.05,0-4.11,4.11A5.51,5.51,0,0,1,15.2,44a5.84,5.84,0,0,1-.48-.39l7.82,7.83a5.53,5.53,0,0,0,7.81,0l0,0,38-38h0l4.1-4.1a5.54,5.54,0,0,1,7.64.17Z"/></g></g></svg>';
 
+      
       $addons = get_field('modular_addons', 'admin-settings');
 
       $postTypes = get_field('post_types', 'options');
 
       //var_dump($postTypes);
-
-      if(in_array('events', $addons)){
+      if(isset($addons)){
+        if(in_array('events', $addons)){
           acf_register_block_type(array(
             'name'              => 'Events Card Slider',
             'title'             => __('Events Card Slider'),
@@ -48,63 +49,71 @@ function my_acf_init_block_types() {
             'keywords'          => array( 'events', 'calendar' ),
           ));
         }
+      }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Team Post Type Related Blocks
-
-        if(in_array('team', $postTypes)){
-          acf_register_block_type(array(
-            'name'              => 'Team Profiles',
-            'title'             => __('Team Profiles'),
-            'description'       => __('A block to display the team profiles in either a slider or a grid'),
-            'render_template'   => 'templates/blocks/team-profiles.php',
-            'category'          => 'team-content',
-            'icon'              => $icon,
-            'keywords'          => array( 'team', 'slider', 'grid', 'content' ),
-          ));
+        if(isset($addons)){
+          if(in_array('team', $postTypes)){
+            acf_register_block_type(array(
+              'name'              => 'Team Profiles',
+              'title'             => __('Team Profiles'),
+              'description'       => __('A block to display the team profiles in either a slider or a grid'),
+              'render_template'   => 'templates/blocks/team-profiles.php',
+              'category'          => 'team-content',
+              'icon'              => $icon,
+              'keywords'          => array( 'team', 'slider', 'grid', 'content' ),
+            ));
+          }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Service Post Type Related Blocks
 
-        if(in_array('services', $postTypes)){
-          acf_register_block_type(array(
-            'name'              => 'Services Overview',
-            'title'             => __('Services Overview'),
-            'description'       => __('A block to display the service cards in either a slider or a grid'),
-            'render_template'   => 'templates/blocks/services-overview.php',
-            'category'          => 'team-content',
-            'icon'              => $icon,
-            'keywords'          => array( 'services', 'slider', 'grid', 'content' ),
-          ));
+        if(isset($addons)){
+          if(in_array('services', $postTypes)){
+            acf_register_block_type(array(
+              'name'              => 'Services Overview',
+              'title'             => __('Services Overview'),
+              'description'       => __('A block to display the service cards in either a slider or a grid'),
+              'render_template'   => 'templates/blocks/services-overview.php',
+              'category'          => 'team-content',
+              'icon'              => $icon,
+              'keywords'          => array( 'services', 'slider', 'grid', 'content' ),
+            ));
+          }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Testimonial Post Type Related Blocks
-        if(in_array('testimonials', $postTypes)){
-          acf_register_block_type(array(
-            'name'              => 'Testimonials',
-            'title'             => __('Testimonials'),
-            'description'       => __('A block to display the customer testimonials in either a slider or a full width block'),
-            'render_template'   => 'templates/blocks/testimonials.php',
-            'category'          => 'testimonials',
-            'icon'              => $icon,
-            'keywords'          => array( 'testimonials', 'slider', 'grid', 'content' ),
-          ));
+        if(isset($addons)){
+          if(in_array('testimonials', $postTypes)){
+            acf_register_block_type(array(
+              'name'              => 'Testimonials',
+              'title'             => __('Testimonials'),
+              'description'       => __('A block to display the customer testimonials in either a slider or a full width block'),
+              'render_template'   => 'templates/blocks/testimonials.php',
+              'category'          => 'testimonials',
+              'icon'              => $icon,
+              'keywords'          => array( 'testimonials', 'slider', 'grid', 'content' ),
+            ));
+          }
         }
 
          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Testimonial Post Type Related Blocks
-        if(in_array('news', $postTypes)){
-          acf_register_block_type(array(
-            'name'              => 'Latest News',
-            'title'             => __('Latest News'),
-            'description'       => __('A block to display the news in either a slider or a full width block'),
-            'render_template'   => 'templates/blocks/latest-news.php',
-            'category'          => 'news',
-            'icon'              => $icon,
-            'keywords'          => array( 'news', 'slider', 'grid', 'content' ),
-          ));
+        if(isset($addons)){
+          if(in_array('news', $postTypes)){
+            acf_register_block_type(array(
+              'name'              => 'Latest News',
+              'title'             => __('Latest News'),
+              'description'       => __('A block to display the news in either a slider or a full width block'),
+              'render_template'   => 'templates/blocks/latest-news.php',
+              'category'          => 'news',
+              'icon'              => $icon,
+              'keywords'          => array( 'news', 'slider', 'grid', 'content' ),
+            ));
+          }
         }
 
         // acf_register_block_type(array(

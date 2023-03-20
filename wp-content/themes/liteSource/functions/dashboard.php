@@ -38,6 +38,17 @@ if(!current_user_can( 'edit_posts' )){
 // Add new menu link to Dashboard
 
 function wpdocs_register_my_custom_menu_page() {
+  if(is_multisite() && is_scs()){
+    add_menu_page(
+      __( 'Custom Menu Title', 'textdomain' ),
+      'Visit Site',
+      'manage_options',
+      network_admin_url(),
+      '',
+      'dashicons-admin-home',
+      1
+    );
+  }
 	add_menu_page(
 		__( 'Custom Menu Title', 'textdomain' ),
 		'Visit Site',
