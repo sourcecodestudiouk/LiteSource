@@ -1,4 +1,5 @@
 <?php 
+if( function_exists('acf_add_options_page') ) {
   $logo = get_field('company_logo', 'options');
   $icon = get_field('company_icon', 'options');
   $layout = get_field('header_layout', 'options');
@@ -12,13 +13,17 @@
   $ctaTxt = getContrastColor($colours['secondary']);
 
   $fixed = get_field('sticky_header', 'options');
+}
 ?>
 
 <?php 
 if(current_user_can( 'edit_posts' )){ ?>
 <div id="scs-admin-menu">
   <div class="company-info">
+    <?php if(isset($icon)){ ?>
     <img src="<?= $icon['url']; ?>" alt="<?= $icon['alt']; ?>"/>
+    <?php
+    } ?>
     <p class="dashboard"><a href="<?= get_home_url(); ?>/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
     <p class="edit"><a href="<?= get_edit_post_link(); ?>"><i class="fa-solid fa-pen-to-square"></i>Edit</a></p>
   </div>
@@ -30,10 +35,13 @@ if(current_user_can( 'edit_posts' )){ ?>
 } ?>
 
 
-<header class="site-header <?php if($fixed){ echo 'fixed-header'; } ?> <?php if(!$cta['add_call_to_action_button']){ echo 'no-cta'; } ;?>" style="background-color:<?= $bgCol; ?>; color:<?= $txtCol; ?>;">
+<header class="site-header <?php if(isset($fixed)){ echo 'fixed-header'; } ?> <?php if(!$cta['add_call_to_action_button']){ echo 'no-cta'; } ;?>" style="background-color:<?= $bgCol; ?>; color:<?= $txtCol; ?>;">
   <div class="container <?= $layout; ?>">
     <a class="logo-container" href="<?php echo get_home_url(); ?>">
+    <?php if(isset($logo)){ ?>
       <img class="logo" src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>"/>
+    <?php
+    } ?>
     </a>
     <?php header_nav(); ?>
     <?php

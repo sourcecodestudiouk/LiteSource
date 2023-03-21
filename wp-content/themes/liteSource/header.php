@@ -25,11 +25,13 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 		<?php 
-		$addons = get_field('modular_addons', 'admin-settings');
-		if(isset($addons)){
-			if(in_array('events', $addons)){ ?>
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwuAmO85Z0y59Ey2Gjn_ib39a-6mW4xhA"></script>
-			<?php
+		if( function_exists('acf_add_options_page') ) {
+			$addons = get_field('modular_addons', 'admin-settings');
+			if(isset($addons)){
+				if(in_array('events', $addons)){ ?>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwuAmO85Z0y59Ey2Gjn_ib39a-6mW4xhA"></script>
+				<?php
+				}
 			}
 		}
 		

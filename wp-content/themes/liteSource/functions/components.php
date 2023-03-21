@@ -7,7 +7,9 @@ function my_body_classes( $classes ) {
     $classes[] = $borderStyle . '-border-radius';
     return $classes;
   }
-add_filter( 'body_class','my_body_classes' );
+if( function_exists('acf_add_options_page') ) {
+  add_filter( 'body_class','my_body_classes' );
+}
 
 
 // Calculate Contrast Ratio
