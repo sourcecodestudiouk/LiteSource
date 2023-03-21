@@ -89,7 +89,9 @@ function scs_login_logo() {
     }
   </style>
 <?php }
+if( function_exists('acf_add_options_page') ) {
 add_action( 'login_enqueue_scripts', 'scs_login_logo' );
+}
 
 
 function my_login_logo_url() {

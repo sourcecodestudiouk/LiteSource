@@ -19,7 +19,7 @@ if(current_user_can( 'edit_posts' )){ ?>
 <div id="scs-admin-menu">
   <div class="company-info">
     <img src="<?= $icon['url']; ?>" alt="<?= $icon['alt']; ?>"/>
-    <p class="dashboard"><a href="/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
+    <p class="dashboard"><a href="<?= get_home_url(); ?>/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
     <p class="edit"><a href="<?= get_edit_post_link(); ?>"><i class="fa-solid fa-pen-to-square"></i>Edit</a></p>
   </div>
   <div class="admin-info">

@@ -13,6 +13,49 @@ function is_scs(){
  }
 }
 
+// do_action( 'wp_insert_site', $new_site );
+// add_action('wp_insert_site', function($site) {
+//   // do something
+// });
+
+
+
+// $wordpress_page = array(
+//     'post_title' => 'Page title',
+//     'post_content' => 'Page Content',
+//     'post_status' => 'publish',
+//     'post_author' => 1,
+//     'post_type' => 'page'
+// )
+// wp_insert_post( $wordpress_page );
+
+function wpse_71863_default_pages( $new_site ) {
+    $default_pages = array(
+        'Home',
+        'Contact',
+    );
+    
+    switch_to_blog( $new_site->id );
+    
+    if ( $current_pages = get_pages() ) {
+        $default_pages = array_diff( $default_pages, wp_list_pluck( $current_pages, 'post_title' ) );
+    }
+
+    foreach ( $default_pages as $page_title ) {        
+        $data = array(
+            'post_title'   => $page_title,
+            'post_content' => "This is my $page_title page.",
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+        );
+
+        wp_insert_post( add_magic_quotes( $data ) );
+    }
+    
+    restore_current_blog();
+}
+
+add_action( 'wp_insert_site', 'wpse_71863_default_pages' );
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

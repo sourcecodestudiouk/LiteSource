@@ -41,11 +41,11 @@ function wpdocs_register_my_custom_menu_page() {
   if(is_multisite() && is_scs()){
     add_menu_page(
       __( 'Custom Menu Title', 'textdomain' ),
-      'Visit Site',
+      'LiteSource Network',
       'manage_options',
       network_admin_url(),
       '',
-      'dashicons-admin-home',
+      'dashicons-admin-network',
       1
     );
   }
@@ -53,7 +53,7 @@ function wpdocs_register_my_custom_menu_page() {
 		__( 'Custom Menu Title', 'textdomain' ),
 		'Visit Site',
 		'manage_options',
-		get_site_url(),
+		home_url(),
 		'',
 		'dashicons-admin-home',
 		1

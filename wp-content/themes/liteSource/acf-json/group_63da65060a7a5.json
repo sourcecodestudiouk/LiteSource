@@ -23,86 +23,6 @@
             "append": ""
         },
         {
-            "key": "field_63f378e414f28",
-            "label": "Footer Style Options",
-            "name": "footer_style_options",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_63f378e414f29",
-                    "label": "Text Colour",
-                    "name": "text_colour",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_63f378e414f2a",
-                    "label": "Background Colour",
-                    "name": "background_colour",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_63ef6472012d6",
-                                "operator": "==",
-                                "value": "row"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "rgba(0,0,0,0)",
-                    "enable_opacity": 1,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_63f3a5ca7f046",
-                    "label": "Icons Colour",
-                    "name": "icons_colour",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
-            ]
-        },
-        {
             "key": "field_63f3795a4d3ff",
             "label": "Menu Columns",
             "name": "menu_columns",
@@ -166,5 +86,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1676912128
+    "modified": 1679316441
 }

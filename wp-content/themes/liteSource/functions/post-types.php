@@ -351,5 +351,7 @@ function scs_post_types() {
 	}
 }
 
-add_action( 'init', 'scs_post_types');
+if( function_exists('acf_add_options_page') ) {
+	add_action( 'init', 'scs_post_types');
+}
 ?>
