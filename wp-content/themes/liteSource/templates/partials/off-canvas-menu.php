@@ -3,13 +3,16 @@
 $options = get_field('mobile_menu_options', 'options');
 $cta = get_field('call_to_action_options', 'options');
 
+
 $colours = get_field('site_colours', 'options');
+if(isset($colours)){
 $primary = $colours['primary'];
 $txtCol = getContrastColor($primary);
 $secondary = $colours['secondary'];
 $ddcol = getContrastColor($secondary);
 $ctaBg = $colours['secondary'];
 $ctaTxt = getContrastColor($secondary);
+}
 ?>
 <section class="off-canvas-menu">
   <div class="off-canvas-menu-content" style="background-color:<?= $primary; ?>; color:<?= $txtCol; ?>;">

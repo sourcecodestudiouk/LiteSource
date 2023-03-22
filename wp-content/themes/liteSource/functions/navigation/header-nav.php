@@ -2,25 +2,31 @@
 
 // Main Navigation
 function header_nav() {
+  if( function_exists('acf_add_options_page') ) {
     $colours = get_field('site_colours', 'options');
+    if(isset($colours)){
     $primary = $colours['primary'];
     $txtCol = getContrastColor($primary);
     $secondary = $colours['secondary'];
     $ddcol = getContrastColor($secondary);
+    }
     ?>
     <nav class="desktop-navigation">
       <?php
       $menu_name = 'header-menu';
       $locations = get_nav_menu_locations();
-      $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-      $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) ); ?>
+      if($locations){
+        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+      }
+       ?>
         <ul class="navigation-container">
             <?php
             $count = 0;
             $topCount = 1;
             $totalCount = 1;
             $submenu = false;
-            if($menuitems){
+            if(isset($menuitems)){
               foreach( $menuitems as $item ):
                   // set up title and url
                   $totalCount++;
@@ -98,4 +104,5 @@ function header_nav() {
       
       </nav>
 <?php
+  }
 }

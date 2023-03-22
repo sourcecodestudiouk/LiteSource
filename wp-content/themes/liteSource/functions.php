@@ -51,11 +51,25 @@ function wpse_71863_default_pages( $new_site ) {
 
         wp_insert_post( add_magic_quotes( $data ) );
     }
+
+    $homepage = get_page_by_title( 'Home' );
+    if ($homepage){
+        update_option( 'page_on_front', $homepage->ID );
+        update_option( 'show_on_front', 'page' );
+    }
+
+    // Find and delete the WP default 'Sample Page'
+    $defaultPage = get_page_by_title( 'Sample Page' );
+    wp_delete_post( $defaultPage->ID, $bypass_trash = true );
+
+    // Find and delete the WP default 'Hello world!' post
+    $defaultPost = get_posts( array( 'title' => 'Hello World!' ) );
+    wp_delete_post( $defaultPost[0]->ID, $bypass_trash = true );
     
     restore_current_blog();
 }
 
-add_action( 'wp_insert_site', 'wpse_71863_default_pages' );
+add_action( 'wp_initialize_site', 'wpse_71863_default_pages' );
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

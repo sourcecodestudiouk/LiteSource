@@ -1,16 +1,21 @@
 <?php 
 if( function_exists('acf_add_options_page') ) {
+  
   $logo = get_field('company_logo', 'options');
   $icon = get_field('company_icon', 'options');
   $layout = get_field('header_layout', 'options');
 
   $colours = get_field('site_colours', 'options');
+  if(isset($colours)){
   $bgCol = $colours['primary'];
   $txtCol = getContrastColor($colours['primary']);
+  }
 
   $cta = get_field('call_to_action_options', 'options');
+  if(isset($cta)){
   $ctaBg = $colours['secondary'];
   $ctaTxt = getContrastColor($colours['secondary']);
+  }
 
   $fixed = get_field('sticky_header', 'options');
 }
@@ -24,7 +29,7 @@ if(current_user_can( 'edit_posts' )){ ?>
     <img src="<?= $icon['url']; ?>" alt="<?= $icon['alt']; ?>"/>
     <?php
     } ?>
-    <p class="dashboard"><a href="<?= get_home_url(); ?>/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
+    <p class="dashboard"><a href="<?= get_site_url(); ?>/wp-admin"><i class="fa-solid fa-gauge"></i> Dashboard</a></p>
     <p class="edit"><a href="<?= get_edit_post_link(); ?>"><i class="fa-solid fa-pen-to-square"></i>Edit</a></p>
   </div>
   <div class="admin-info">
@@ -45,7 +50,7 @@ if(current_user_can( 'edit_posts' )){ ?>
     </a>
     <?php header_nav(); ?>
     <?php
-    if($cta['add_call_to_action_button']){ ?>
+    if(isset($cta['add_call_to_action_button'])){ ?>
        <p class="btn" style="background-color:<?= $ctaBg; ?>; color:<?= $ctaTxt; ?>"><span style="background-color:<?= $ctaTxt; ?>;" class="background"></span><a href="<?= $cta['call_to_action_button']['url'] ?>"><?= $cta['call_to_action_button']['title'] ?></a></p> 
     <?php
     } ?>

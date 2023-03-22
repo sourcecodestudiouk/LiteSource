@@ -1,9 +1,11 @@
 <?php
   $colours = get_field('site_colours', 'options');
-  $primary = $colours['primary'];
-  $txtCol = getContrastColor($primary);
-  $secondary = $colours['secondary'];
-  $ddcol = getContrastColor($secondary);
+  if(isset($colours)){
+    $primary = $colours['primary'];
+    $txtCol = getContrastColor($primary);
+    $secondary = $colours['secondary'];
+    $ddcol = getContrastColor($secondary);
+  }
   $menus = get_field('menu_columns', 'options');
   $company_description = get_field('company_description', 'options');
   $email = get_field('email_address', 'options');
