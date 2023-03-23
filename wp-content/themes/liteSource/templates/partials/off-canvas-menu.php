@@ -29,7 +29,7 @@ $ctaTxt = getContrastColor($secondary);
     </div>
     <div class="footer">
       <?php
-      if($cta['add_call_to_action_button']){ ?>
+      if(isset($cta['add_call_to_action_button']) && $cta ["call_to_action_button"] != ''){ ?>
        <p class="btn" style="background-color:<?= $ctaBg; ?>; color:<?= $ctaTxt; ?>"><span style="background-color:<?= $ctaTxt; ?>;" class="background"></span><a href="<?= $cta['call_to_action_button']['url'] ?>"><?= $cta['call_to_action_button']['title'] ?></a></p> 
       <?php
       } ?>

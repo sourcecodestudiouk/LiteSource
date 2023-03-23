@@ -690,6 +690,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 body h1 {
   font-size: 66px;
+  letter-spacing: 3px;
 }
 @media (max-width: 768px) {
   body h1 {
@@ -709,6 +710,12 @@ body h6 {
   body h6 {
     font-size: 15px;
   }
+}
+body main p {
+  font-size: 20px;
+}
+body main small {
+  font-size: 16px;
 }
 
 .roboto {
@@ -1214,6 +1221,7 @@ body h6 {
 .site-footer .container .company-information {
   width: 50%;
   padding-right: 50px;
+  flex-grow: 2;
 }
 @media (max-width: 768px) {
   .site-footer .container .company-information {
@@ -1227,6 +1235,12 @@ body h6 {
     text-align: center;
     width: 90%;
   }
+}
+.site-footer .container .company-information img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
 }
 .site-footer .container .company-information a {
   color: inherit;
@@ -1795,16 +1809,16 @@ body h6 {
   position: relative;
   z-index: 2;
 }
-.hero-header-block .container h1, .hero-header-block .container h6 {
+.hero-header-block .container h1, .hero-header-block .container p {
   max-width: 60%;
 }
 @media (max-width: 768px) {
-  .hero-header-block .container h1, .hero-header-block .container h6 {
+  .hero-header-block .container h1, .hero-header-block .container p {
     max-width: 80%;
   }
 }
 @media (max-width: 576px) {
-  .hero-header-block .container h1, .hero-header-block .container h6 {
+  .hero-header-block .container h1, .hero-header-block .container p {
     max-width: 100%;
   }
 }

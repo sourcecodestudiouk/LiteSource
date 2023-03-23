@@ -68,7 +68,7 @@ else if($block == 'accent' || $overlay == 'accent'){
     color:<?= $txtCol; ?>;">
     <div class="container">
         <h1><?= $heading; ?></h1>
-        <h6><?= $description; ?></h6>
+        <p><?= $description; ?></p>
         <?php get_template_part('templates/partials/button_group'); ?>
     </div>
     <span class="overlay" style="background-color:<?= $bg; ?>"></span>

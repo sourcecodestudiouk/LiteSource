@@ -16,6 +16,7 @@
     .company-information{
       width:50%;
       padding-right:50px;
+      flex-grow: 2;
       @include media("<=md") {
         width:75%;
         padding-right:0;
@@ -24,6 +25,12 @@
       @include media("<=sm") {
         text-align: center;
         width:90%;
+      }
+      img{
+        width:100px;
+        height:100px;
+        object-fit: contain;
+        margin-bottom:15px;
       }
       a{
         color:inherit;

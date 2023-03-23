@@ -53,7 +53,7 @@ function my_acf_init_block_types() {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Team Post Type Related Blocks
-        if(isset($addons)){
+        if(isset($postTypes)){
           if(in_array('team', $postTypes)){
             acf_register_block_type(array(
               'name'              => 'Team Profiles',
@@ -70,7 +70,7 @@ function my_acf_init_block_types() {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Service Post Type Related Blocks
 
-        if(isset($addons)){
+        if(isset($postTypes)){
           if(in_array('services', $postTypes)){
             acf_register_block_type(array(
               'name'              => 'Services Overview',
@@ -86,7 +86,7 @@ function my_acf_init_block_types() {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Testimonial Post Type Related Blocks
-        if(isset($addons)){
+        if(isset($postTypes)){
           if(in_array('testimonials', $postTypes)){
             acf_register_block_type(array(
               'name'              => 'Testimonials',
@@ -102,7 +102,7 @@ function my_acf_init_block_types() {
 
          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Testimonial Post Type Related Blocks
-        if(isset($addons)){
+        if(isset($postTypes)){
           if(in_array('news', $postTypes)){
             acf_register_block_type(array(
               'name'              => 'Latest News',
@@ -365,6 +365,31 @@ function my_acf_google_map_api( $api ){
   return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Create and remove pages depending on 
+
+add_action('acf/save_post', 'my_acf_save_post');
+function my_acf_save_post( $post_id ) {
+
+    // Get newly saved values.
+    $values = get_fields( $post_id );
+
+    // Check the new value of a specific field.
+    $postTypes = get_field('post_types', 'options');
+
+    if(in_array('testimonials', $postTypes)){
+      $data = array(
+            'post_title'   => 'test page',
+            'post_content' => "This is my test page.",
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+        );
+
+        wp_insert_post( add_magic_quotes( $data ) );
+    }
+}
 
 
 ?>

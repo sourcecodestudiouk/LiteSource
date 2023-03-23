@@ -13,36 +13,35 @@
   $address = get_field('address', 'options');
   $vat = get_field('vat_number', 'options');
   $company = get_field('company_number', 'options');
+
 ?>
 
 <footer class="site-footer" role="contentinfo" style="background-color:<?= $colours['primary']; ?>; color:<?= $txtCol; ?>">
   <div class="container">
 
   <div class="company-information">
-  <?php 
-  if($company_description){ ?>
-    <h2><?= get_bloginfo(); ?></h2>
-    <p class="company-description"><?= $company_description; ?></p>
+    <?php $icon = get_field('company_icon', 'options'); ?>
+    <img src="<?= $icon['url']; ?>" alt="Company Icon"/>
+    <?php  if($company_description){ ?><p class="company-description"><?= $company_description; ?></p> <?php } ?>
     <div class="contact-details">
       <?php 
-      if(isset($email)){ ?>
+      if($email != ''){ ?>
         <p><a href="mailto:<?= $email; ?>"><i class="fa-solid fa-envelope"></i><?= $email; ?></a></p>
       <?php
       } ?>
       <?php 
-      if(isset($telephone)){ ?>
+      if($telephone != ''){ ?>
        <p><a href="tel:<?= $telephone; ?>"><i class="fa-solid fa-phone"></i><?= $telephone; ?></a></p>
       <?php
       } ?>
       <?php 
-      if(isset($address)){ ?>
+      if($address != ''){ ?>
         <p><a target="_blank" href="https://www.google.com/maps/dir//<?= $address; ?>"><i class="fa-solid fa-location-dot"></i><?= $address; ?></a></p>
       <?php
       } ?>
     </div>
     <?php get_template_part('templates/partials/social-media'); ?>
-  <?php
-  } ?>
+  
   </div>
   <?php if($menus){ ?>
     <div class="menus">
