@@ -30,118 +30,6 @@
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0
-        },
-        {
-            "key": "field_640b4763731dc",
-            "label": "Add Departments Archive",
-            "name": "add_departments_archive",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63da7c7eaa115",
-                        "operator": "==",
-                        "value": "departments"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_640b4af288ccd",
-            "label": "Add Services Archive",
-            "name": "add_services_archive",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63da7c7eaa115",
-                        "operator": "==",
-                        "value": "services"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_640b4b5488ccf",
-            "label": "Add Team Archive",
-            "name": "add_team_archive",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63da7c7eaa115",
-                        "operator": "==",
-                        "value": "team"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_640b4b7288cd0",
-            "label": "Add Project Archive",
-            "name": "add_project_archive",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63da7c7eaa115",
-                        "operator": "==",
-                        "value": "projects"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
         }
     ],
     "location": [
@@ -162,5 +50,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678463536
+    "modified": 1679676334
 }

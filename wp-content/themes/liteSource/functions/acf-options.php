@@ -373,23 +373,130 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 add_action('acf/save_post', 'my_acf_save_post');
 function my_acf_save_post( $post_id ) {
 
-    // Get newly saved values.
     $values = get_fields( $post_id );
-
-    // Check the new value of a specific field.
     $postTypes = get_field('post_types', 'options');
 
-    if(in_array('testimonials', $postTypes)){
+    // Services Archives
+    if(in_array('services', $postTypes)){
+      $post_title = 'Services';
       $data = array(
-            'post_title'   => 'test page',
-            'post_content' => "This is my test page.",
+            'post_title'   => $post_title,
             'post_status'  => 'publish',
             'post_type'    => 'page',
-        );
-
+      );
+      if(!post_exists($post_title)){
         wp_insert_post( add_magic_quotes( $data ) );
+      }
+    }
+    else{
+      $post_title = 'Services';
+      $tPage = get_page_by_title($post_title);
+      wp_delete_post( $tPage->ID, $bypass_trash = true );
+    }
+
+    // Depertments Archive
+    if(in_array('departments', $postTypes)){
+      $post_title = 'Departments';
+      $data = array(
+            'post_title'   => $post_title,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+      );
+      if(!post_exists($post_title)){
+        wp_insert_post( add_magic_quotes( $data ) );
+      }
+    }
+    else{
+      $post_title = 'Departments';
+      $tPage = get_page_by_title($post_title);
+      wp_delete_post( $tPage->ID, $bypass_trash = true );
+    }
+
+     // Team Members Archive
+     if(in_array('team', $postTypes)){
+      $post_title = 'Team';
+      $data = array(
+            'post_title'   => $post_title,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+      );
+      if(!post_exists($post_title)){
+        wp_insert_post( add_magic_quotes( $data ) );
+      }
+    }
+    else{
+      $post_title = 'Team';
+      $tPage = get_page_by_title($post_title);
+      wp_delete_post( $tPage->ID, $bypass_trash = true );
+    }
+
+    // Projects Archive
+    if(in_array('projects', $postTypes)){
+      $post_title = 'Projects';
+      $data = array(
+            'post_title'   => $post_title,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+      );
+      if(!post_exists($post_title)){
+        wp_insert_post( add_magic_quotes( $data ) );
+      }
+    }
+    else{
+      $post_title = 'Projects';
+      $tPage = get_page_by_title($post_title);
+      wp_delete_post( $tPage->ID, $bypass_trash = true );
+    }
+
+    // Projects Archive
+    if(in_array('news', $postTypes)){
+      $post_title = 'News';
+      $data = array(
+            'post_title'   => $post_title,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+      );
+      if(!post_exists($post_title)){
+        wp_insert_post( add_magic_quotes( $data ) );
+      }
+    }
+    else{
+      $post_title = 'News';
+      $tPage = get_page_by_title($post_title);
+      wp_delete_post( $tPage->ID, $bypass_trash = true );
+    }
+
+}
+
+// Add an archive state into the page, this will automatcially create archive pages.
+add_filter('display_post_states', 'wpsites_custom_post_states');
+function wpsites_custom_post_states($states) {
+    global $post;
+    if( ('page'==get_post_type($post->ID) && ($post->post_name == 'services' || $post->post_name == 'departments' || $post->post_name == 'team' || $post->post_name == 'news' || $post->post_name == 'projects')) ) {
+        $states[] = __('Archive');
+        update_post_meta( $post->ID, '_wp_page_template', 'content-archive.php' );
+    }
+    return $states;
+}
+
+function remove_page_attribute_support() {
+  global $post;
+    if( ('page' == get_post_type($post->ID) && ($post->post_name == 'services' || $post->post_name == 'departments' || $post->post_name == 'team' || $post->post_name == 'news' || $post->post_name == 'projects')) ) {
+      remove_post_type_support('page','page-attributes');
+      remove_post_type_support('page' ,'editor');
+      remove_meta_box('pageparentdiv', 'page', 'side');
     }
 }
+add_action( 'admin_head-post.php', 'remove_page_attribute_support' );
+
+
+function disable_gutenberg( $can_edit, $post ) {
+    if( $post->post_type == 'page' && ($post->post_name == 'services' || $post->post_name == 'departments' || $post->post_name == 'team' || $post->post_name == 'news' || $post->post_name == 'projects')) {
+      return true;
+    }
+    return false;
+}
+add_filter( 'use_block_editor_for_post', 'disable_gutenberg', 10, 2 );
 
 
 ?>

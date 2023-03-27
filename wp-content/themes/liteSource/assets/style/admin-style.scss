@@ -2,7 +2,7 @@ $primary: #170E28;
 $secondary: #FFBAFA;
 
 html.wp-toolbar{
-    padding-top:0!important;
+  padding-top:0!important;
   }
   #wpwrap{
     background-color:white;
@@ -10,6 +10,19 @@ html.wp-toolbar{
 
   #adminmenuback, #adminmenu, #adminmenuwrap{
     background-color:$primary!important;
+    color:white!important;
+  }
+  .opensub{
+    .wp-has-submenu{
+     background-color:#FFBAFA!important;
+    }
+    &:hover{
+      a{
+        &:after{
+          color:red!important;
+        }
+      }
+    }
   }
 
   #adminmenu {
@@ -72,6 +85,9 @@ html.wp-toolbar{
 
   .page-title-action{
     border-radius:10px!important;
+    background-color:$primary!important;
+    border-color:$primary!important;
+    color:white!important;
   }
 
   #footer-upgrade{
@@ -79,7 +95,7 @@ html.wp-toolbar{
   }
 
   #wpadminbar{
-    //display:none;
+    display:none;
   }
 
   #adminmenu li.wp-menu-separator {
@@ -105,14 +121,30 @@ html.wp-toolbar{
   }
 
   #adminmenu .toplevel_page_company-profile a{
-    //color:<?= $colours['primary_colour']; ?>!important;
-    //background-image:url(<?= $img['url']; ?>);
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
   }
   #adminmenu .toplevel_page_company-profile a .wp-menu-name{
     opacity: 0;
+  }
+
+  #adminmenu div.wp-menu-image:before{
+    color:white!important;
+  }
+
+  .wp-core-ui {
+    .button{
+      color:white!important;
+      background-color:#170E28!important;
+      border-color:#170E28!important;
+    }
+    .button-link{
+      color:#FFBAFA!important;
+    }
+    select{
+      color:#170E28!important;
+    }
   }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -145,4 +177,44 @@ html.wp-toolbar{
 // Forminator Admin
 .sui-footer, .sui-footer-nav, .sui-footer-social, .sui-image{
   display:none!important;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Dashboard Widget
+#dashboard-widgets-wrap{
+  .postbox{
+    border-radius:8px;
+    border:0;
+    .postbox-header{
+      background-color:$primary;
+      border-radius:8px 8px 0 0;
+      border-bottom:0;
+      h2{
+        color:white;
+      }
+  
+    }
+    .inside{
+      background-color:#eee;
+      margin-top:0;
+      padding-top:14px;
+      border-radius:0 0 8px 8px;
+      h3{
+        font-weight:700!important;
+      }
+      > p{
+        margin-top:0;
+      }
+      .button-container{
+        .button{
+          background-color:$secondary;
+          border-color:$secondary;
+          color:$primary;
+          &:hover{
+            background-color:darken($secondary, 5%);
+          }
+        }
+      }
+    }
+  }
 }

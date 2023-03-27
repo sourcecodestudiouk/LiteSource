@@ -8,6 +8,14 @@ html.wp-toolbar {
 
 #adminmenuback, #adminmenu, #adminmenuwrap {
   background-color: #170E28 !important;
+  color: white !important;
+}
+
+.opensub .wp-has-submenu {
+  background-color: #FFBAFA !important;
+}
+.opensub:hover a:after {
+  color: red !important;
 }
 
 #adminmenu li:focus .wp-menu-image:before, #adminmenu li:hover .wp-menu-image:before {
@@ -60,6 +68,9 @@ html.wp-toolbar {
 
 .page-title-action {
   border-radius: 10px !important;
+  background-color: #170E28 !important;
+  border-color: #170E28 !important;
+  color: white !important;
 }
 
 #footer-upgrade {
@@ -67,7 +78,7 @@ html.wp-toolbar {
 }
 
 #wpadminbar {
-  //display: none;
+  display: none;
 }
 
 #adminmenu li.wp-menu-separator {
@@ -101,6 +112,22 @@ html.wp-toolbar {
   opacity: 0;
 }
 
+#adminmenu div.wp-menu-image:before {
+  color: white !important;
+}
+
+.wp-core-ui .button {
+  color: white !important;
+  background-color: #170E28 !important;
+  border-color: #170E28 !important;
+}
+.wp-core-ui .button-link {
+  color: #FFBAFA !important;
+}
+.wp-core-ui select {
+  color: #170E28 !important;
+}
+
 #wpbody-content a {
   color: #170E28;
 }
@@ -121,4 +148,37 @@ html.wp-toolbar {
 
 .sui-footer, .sui-footer-nav, .sui-footer-social, .sui-image {
   display: none !important;
+}
+
+#dashboard-widgets-wrap .postbox {
+  border-radius: 8px;
+  border: 0;
+}
+#dashboard-widgets-wrap .postbox .postbox-header {
+  background-color: #170E28;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 0;
+}
+#dashboard-widgets-wrap .postbox .postbox-header h2 {
+  color: white;
+}
+#dashboard-widgets-wrap .postbox .inside {
+  background-color: #eee;
+  margin-top: 0;
+  padding-top: 14px;
+  border-radius: 0 0 8px 8px;
+}
+#dashboard-widgets-wrap .postbox .inside h3 {
+  font-weight: 700 !important;
+}
+#dashboard-widgets-wrap .postbox .inside > p {
+  margin-top: 0;
+}
+#dashboard-widgets-wrap .postbox .inside .button-container .button {
+  background-color: #FFBAFA;
+  border-color: #FFBAFA;
+  color: #170E28;
+}
+#dashboard-widgets-wrap .postbox .inside .button-container .button:hover {
+  background-color: #ffa1f8;
 }
